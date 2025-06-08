@@ -5,11 +5,11 @@
 #include <vector>
 #include <memory>
 
-class Alive
+class Creature
 {
 protected:
 	int hp;
 	int armor;
 };
 
-#endif // !Creature
+#endif // !Creature 
