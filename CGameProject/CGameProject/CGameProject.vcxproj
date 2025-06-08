@@ -128,11 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Randomaizer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Randomaizer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\WorldInYourHands\\CGameProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|D:\\WorldInYourHands\\CGameProject\\CGameProject\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|solutionrelative:CGameProject\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|D:\\WorldInYourHands\\CGameProject\\CGameProject\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|solutionrelative:CGameProject\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|D:\\WorldInYourHands\\CGameProject\\CGameProject\\Creature.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|solutionrelative:CGameProject\\Creature.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|D:\\WorldInYourHands\\CGameProject\\CGameProject\\Creature.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8497C592-7B23-47D2-BEC1-A1220C7347FB}|CGameProject\\CGameProject.vcxproj|solutionrelative:CGameProject\\Creature.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -19,15 +31,62 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Item.cpp",
+              "DocumentMoniker": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Item.cpp",
+              "RelativeDocumentMoniker": "CGameProject\\Item.cpp",
+              "ToolTip": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Item.cpp",
+              "RelativeToolTip": "CGameProject\\Item.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-08T19:51:27.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Item.h",
+              "DocumentMoniker": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Item.h",
+              "RelativeDocumentMoniker": "CGameProject\\Item.h",
+              "ToolTip": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Item.h",
+              "RelativeToolTip": "CGameProject\\Item.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-08T18:51:51.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Creature.cpp",
+              "DocumentMoniker": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Creature.cpp",
+              "RelativeDocumentMoniker": "CGameProject\\Creature.cpp",
+              "ToolTip": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Creature.cpp",
+              "RelativeToolTip": "CGameProject\\Creature.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-08T18:35:22.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Creature.h",
               "DocumentMoniker": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Creature.h",
               "RelativeDocumentMoniker": "CGameProject\\Creature.h",
               "ToolTip": "D:\\WorldInYourHands\\CGameProject\\CGameProject\\Creature.h",
               "RelativeToolTip": "CGameProject\\Creature.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-23T23:28:45.142Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
