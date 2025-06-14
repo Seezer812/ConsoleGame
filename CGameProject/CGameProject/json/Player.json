@@ -1,41 +1,40 @@
 {
-  "Name": "Билли Ногами",
+  "Name": "Billy Nogami",
   "Hp": "500",
   "Damage": "10",
 
   "Dialogues": {
     "Atack": [
-      "Каждый мой удар — шаг к победе и свободе!",
-      "Почувствуй силу, которая движет мной!",
-      "Не думай, что сможешь уйти — я разорву тебя на части!",
-      "Каждый удар приближает твой конец!",
-      "Я не остановлюсь, пока ты не падёшь у моих ног!",
-      "Хрясь! Это тебе, тварь!",
-      "С дороги! У меня нет времени на таких, как ты!",
-      "Слишком поздно молить о пощаде…",
-      "Я не отступал раньше — и уж точно не отступлю перед тобой!",
-      "Тебя ждала боль — я просто ускоряю процесс!",
-      "Держись крепче — сейчас будет больно!",
-      "Ты — просто ещё одна ошибка, которую я исправляю!",
-      "Не сопротивляйся. Это закончится быстро — и плохо для тебя.",
-      "У меня есть цель. Ты — просто преграда на пути."
+      "Every strike of mine is a step towards victory and freedom!",
+      "Feel the force that drives me!",
+      "Don't think you can escape вЂ” I'll tear you apart!",
+      "Every blow brings your end closer!",
+      "I won't stop until you fall at my feet!",
+      "Wham! Take that, you wretch!",
+      "Out of my way! I don't have time for the likes of you!",
+      "Too late to beg for mercy...",
+      "I didn't back down before вЂ” and I sure won't back down to you!",
+      "Pain was coming for you вЂ” I'm just speeding up the process!",
+      "Hold on tight вЂ” this is gonna hurt!",
+      "You're just another mistake I'm correcting!",
+      "Don't resist. This will end quickly вЂ” and badly for you.",
+      "I have a goal. You're just an obstacle in my path."
     ],
     "Defense": [
 
-
     ],
     "GetDamage": [
-      "Бей сильнее. Мне ещё даже не пришлось напрячься.",
-      "Это всё? Я ожидал хоть чего-то серьёзного.",
-      "Ноги стоят крепко, руки держат точно. Я не упаду.",
-      "Если ты хочешь сломать меня — тебе придётся сильно постараться.",
-      "Ты не первый, кто пытался меня добить. И не станешь последним.",
-      "Оу, это был удар? Я уж подумал, ветер подул.",
-      "Я уже засыпаю. Может, начнёшь стараться?",
-      "Сейчас не время падать. Сейчас — время выстоять!",
-      "Не дождёшься... Я держусь!",
-      "Чёрт... неплохо. Но я всё ещё здесь.",
-      "Ноги стоят крепко, руки держат точно. Я не упаду."
+      "Hit harder. I haven't even had to strain yet.",
+      "That's all? I was expecting something serious.",
+      "My feet stand firm, my hands hold steady. I won't fall.",
+      "If you want to break me вЂ” you'll have to try much harder.",
+      "You're not the first who tried to finish me off. And you won't be the last.",
+      "Ow, was that a hit? I thought it was just the wind blowing.",
+      "I'm falling asleep here. Maybe start trying?",
+      "Now's not the time to fall. Now вЂ” is the time to stand firm!",
+      "Not a chance... I'm holding on!",
+      "Damn... not bad. But I'm still here.",
+      "My feet stand firm, my hands hold steady. I'm not falling."
     ]
   }
 }

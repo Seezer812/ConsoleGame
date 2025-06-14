@@ -1,7 +1,5 @@
 #include "Item.h"
 
-
-
 const std::wstring& Item::GetName() const
 {
     return name;

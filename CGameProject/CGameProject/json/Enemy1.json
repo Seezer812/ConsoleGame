@@ -1,47 +1,47 @@
 {
-  "Name": "Кикимора",
+  "Name": "Kikimora",
   "Hp": "100",
   "Damage": "10",
   "Dialogues": {
     "StartFight": [
-      "Привет, путник! Хочешь сыграть? Только не обижайся, если проиграешь...",
-      "Я не играю, я побеждаю.",
-      "Посмотрим, как долго продержишься!",
+      "Hello, traveler! Want to play? Don't be upset if you lose...",
+      "I don't play games, I win them.",
+      "Let's see how long you last!",
 
-      "Слышишь шепот трясины? Он зовёт тебя...",
-      "Я не слежу за шёпотом, а за своим мечом.",
-      "Меч может порезать плоть, но не душу...",
+      "Hear the whispers of the marsh? They're calling you...",
+      "I don't follow whispers, I follow my sword.",
+      "A sword can cut flesh, but not the soul...",
 
-      "Ой, опять герой... Ты по записи?",
-      "По тебе — по лицу!",
-      "Ты уже мёртв. Просто ещё дышишь..."
+      "Oh, another hero... Do you have an appointment?",
+      "An appointment? With your face!",
+      "You're already dead. You just haven't stopped breathing yet..."
     ],
     "Atack": [
-      "Сквозь трясины — к смерти!",
-      "Унесу в трясину, как всех до тебя...",
-      "Шепчи молитвы, пока можешь...",
-      "Ты думал, я сказочка на ночь?",
-      "Ну что, герой, испачкался?"
+      "Through the marshes вЂ“ to your death!",
+      "I'll drag you into the swamp like all the others...",
+      "Whisper your prayers while you still can...",
+      "Did you think I was just a bedtime story?",
+      "Well, hero? Got a little dirty, didn't you?"
     ],
     "Defense": [
-      "Камыши, обвейте меня!",
-      "Земля, защити дитя своё!",
-      "Мрак, укрой меня!",
-      "Тьма, закрой мне лицо!"
+      "Reeds, envelop me!",
+      "Earth, protect your child!",
+      "Darkness, cover me!",
+      "Shadows, shield my face!"
     ],
     "GetDamage": [
-      "НЕ СМЕЙ МЕНЯ ТРОГАТЬ!",
-      "Ты заплатишь за это!",
-      "Я пережила и не такое...",
-      "Шепчут корни — не время умирать...",
-      "Ой, больно-то как... хи-хи!"
+      "DON'T YOU DARE TOUCH ME!",
+      "You'll pay for this!",
+      "I've survived worse than you...",
+      "The roots whisper вЂ“ not yet time to die...",
+      "Ooh, that stings... hee-hee!"
     ],
     "Died": [
-      "Пф... даже смерть лучше твоей болтовни...",
-      "Тьма... улыбается тебе...",
-      "Мои сестры найдут тебя...",
-      "Всё уходит... в мрак...",
-      "Я была здесь... до тебя... и буду... после..."
+      "Pff... even death is better than your chatter...",
+      "The darkness... smiles upon you...",
+      "My sisters will find you...",
+      "Everything fades... into darkness...",
+      "I was here... before you... and will be... after..."
     ]
-
   }
+}
