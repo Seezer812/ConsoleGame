@@ -17,6 +17,9 @@ Creature::Creature(const std::string& json_filename) {
     if (j.contains("Strength")) {
         strength = std::stoi(j["Strength"].get<std::string>());
     }
+    else {
+        strength = 0;
+    }
 
     if (j.contains("Hp")) {
         hp = std::stoi(j["Hp"].get<std::string>());
@@ -96,4 +99,21 @@ void Creature::SetArmor(int new_armor)
 void Creature::SetMoney(int new_money)
 {
     money = new_money;
+}
+
+
+
+int Creature::GetAttack() const {
+    return strength;
+}
+
+void Creature::TakeDamage(int amount) {
+    int damage = amount - armor;
+    if (damage < 0) damage = 0;
+    hp -= damage;
+    if (hp < 0) hp = 0;
+}
+
+bool Creature::IsAlive() const {
+    return hp > 0;
 }

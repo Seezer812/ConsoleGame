@@ -40,6 +40,10 @@ public:
 	void SetHp(int new_hp);
 	void SetArmor(int new_armor);
 	void SetMoney(int new_money);
+
+	int GetAttack() const;
+	void TakeDamage(int amount);     
+	bool IsAlive() const;
 };
 
 #endif // !CREATURE

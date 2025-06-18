@@ -1,6 +1,6 @@
 {
   "Name": "Kikimora",
-  "Hp": "100",
+  "Hp": "20",
   "Strength": "10",
   "Armor": "0",
   "Dialogues": {
@@ -37,12 +37,15 @@
       "The roots whisper – not yet time to die...",
       "Ooh, that stings... hee-hee!"
     ],
-    "Died": [
+    "Victory": [
       "Pff... even death is better than your chatter...",
       "The darkness... smiles upon you...",
       "My sisters will find you...",
       "Everything fades... into darkness...",
       "I was here... before you... and will be... after..."
+    ],
+    "Defeat": [
+      "HAHAHAHAHAHA YOU LOSE!!!"
     ]
   }
 }
