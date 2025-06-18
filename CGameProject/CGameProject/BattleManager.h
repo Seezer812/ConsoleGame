@@ -2,27 +2,23 @@
 #include "Creature.h"
 #include <iostream>
 #include "json.hpp"
-
+#include "Random.h"
 
 class BattleManager
 {
 
 private:
-	BattleManager() {}
+	BattleManager() = default;
+	~BattleManager() = default;
 
-public:
 	BattleManager(const BattleManager&) = delete;
 	BattleManager& operator=(const BattleManager&) = delete;
 
-	static BattleManager& getInstance() {
-		static BattleManager instance;
-		return instance;
-	}
+public:
 
-	int NormalFight(Creature& Enemy, Creature& Player) {
-		while (Enemy.GetHp() > 0 and Player.GetHp()) {
 
-		}
-	}
+	static BattleManager& getInstance();
+
+	int StartRegularBattle(Creature& Enemy, Creature& Player);
 };
 
