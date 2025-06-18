@@ -1,8 +1,8 @@
 {
   "Name": "Billy Nogami",
   "Hp": "500",
-  "Damage": "10",
-
+  "Strength": "10",
+  "Armor":  "0",
   "Dialogues": {
     "Atack": [
       "Every strike of mine is a step towards victory and freedom!",

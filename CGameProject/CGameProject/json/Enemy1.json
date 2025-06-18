@@ -1,7 +1,8 @@
 {
   "Name": "Kikimora",
   "Hp": "100",
-  "Damage": "10",
+  "Strength": "10",
+  "Armor": "0",
   "Dialogues": {
     "StartFight": [
       "Hello, traveler! Want to play? Don't be upset if you lose...",
