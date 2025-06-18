@@ -1,4 +1,4 @@
-#include "Randomaizer.h"
+#include "Random.h"
 
 int Random::randint(int start, int end)
 {
