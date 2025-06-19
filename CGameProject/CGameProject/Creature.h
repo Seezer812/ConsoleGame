@@ -10,7 +10,6 @@
 #include <fstream>
 #include <iostream>
 
-
 using json = nlohmann::json;
 
 class Creature
@@ -21,6 +20,10 @@ private:
 	int armor;
 	int money;
 	int strength;
+
+	int temp_armor = 0;
+	int attack_boost = 0;
+	int attack_penalty = 0;
 
 	std::unordered_map <std::string, std::vector<std::string>> dialogues;
 	std::vector <std::shared_ptr<Item>> inventory;
@@ -41,9 +44,17 @@ public:
 	void SetArmor(int new_armor);
 	void SetMoney(int new_money);
 
-	int GetAttack() const;
-	void TakeDamage(int amount);     
+	int GetAttack();
+	void TakeDamage(int amount);
 	bool IsAlive() const;
+
+	// New mechanics
+	void SetTemporaryArmor(int value);
+	void Heal(int amount);
+	void BoostNextAttack(int amount);
+	void ReduceAttackTemporarily(int amount);
+
+	void ResetTurnModifiers();
 };
 
 #endif // !CREATURE
