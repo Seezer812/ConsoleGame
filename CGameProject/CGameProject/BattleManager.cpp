@@ -10,17 +10,17 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
     std::cout << "Press Enter to begin the fight...";
     std::cin.ignore();
 
-    while (player.GetHp() > 0 && enemy.GetHp() > 0) {
+    while (player.GetHp() > 0 and enemy.GetHp() > 0) {
         system("cls");
 
         enemy.TakeDamage(player.GetAttack());
-        std::cout << player.GetDialogues().at("Atack")[Random::randint(0, player.GetDialogues().at("Atack").size()) - 1]
+        std::cout << player.GetDialogues().at("Attack")[Random::randint(0, player.GetDialogues().at("Attack").size()) - 1]
             << " Enemy HP: " << enemy.GetHp() << "\n";
 
         if (enemy.GetHp() <= 0) break;
 
         player.TakeDamage(enemy.GetAttack());
-        std::cout << enemy.GetDialogues().at("Atack")[Random::randint(0, enemy.GetDialogues().at("Atack").size()) - 1]
+        std::cout << enemy.GetDialogues().at("Attack")[Random::randint(0, enemy.GetDialogues().at("Attack").size()) - 1]
             << " Player HP: " << player.GetHp() << "\n";
 
         std::cout << "\nPress Enter to continue...";
@@ -29,7 +29,7 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
 
     system("cls");
 
-    if (enemy.GetHp() > 0) {
+    if (player.GetHp() > 0) {
         std::cout << enemy.GetDialogues().at("Victory")[Random::randint(0, enemy.GetDialogues().at("Victory").size()) - 1] << "\n";
         return 1;
     }

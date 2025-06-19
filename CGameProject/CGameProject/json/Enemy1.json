@@ -17,7 +17,7 @@
       "An appointment? With your face!",
       "You're already dead. You just haven't stopped breathing yet..."
     ],
-    "Atack": [
+    "Attack": [
       "Through the marshes – to your death!",
       "I'll drag you into the swamp like all the others...",
       "Whisper your prayers while you still can...",
@@ -45,7 +45,9 @@
       "I was here... before you... and will be... after..."
     ],
     "Defeat": [
-      "HAHAHAHAHAHA YOU LOSE!!!"
+      "HAHAHAHAHAHA YOU LOSE!!!",
+      "I’d say ‘good try,’ but… was it really?",
+      "Thanks for the warm-up! When does the real competition start?"
     ]
   }
 }
