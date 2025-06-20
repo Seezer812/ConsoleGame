@@ -129,13 +129,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="Creature.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Randomaizer.cpp" />
+    <ClCompile Include="Random.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleManager.h" />
     <ClInclude Include="Creature.h" />
-    <ClInclude Include="Randomaizer.h" />
+    <ClInclude Include="Random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

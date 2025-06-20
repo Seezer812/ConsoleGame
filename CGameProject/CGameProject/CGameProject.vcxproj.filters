@@ -18,10 +18,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Randomaizer.cpp">
+    <ClCompile Include="Random.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="BattleManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creature.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +32,7 @@
     <ClInclude Include="Creature.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Randomaizer.h">
+    <ClInclude Include="Random.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="BattleManager.h">
