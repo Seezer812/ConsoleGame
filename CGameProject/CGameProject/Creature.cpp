@@ -75,6 +75,12 @@ int Creature::GetArmor() const
 	return armor + temp_armor;
 }
 
+int Creature::GetPermanentArmor() const
+{
+	return armor;
+}
+
+
 int Creature::GetMoney() const
 {
 	return money;

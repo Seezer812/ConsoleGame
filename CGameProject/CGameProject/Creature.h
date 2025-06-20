@@ -39,6 +39,7 @@ public:
 	int GetHp() const;
 	int GetArmor() const;
 	int GetMoney() const;
+	int GetPermanentArmor() const;
 
 	void SetHp(int new_hp);
 	void SetArmor(int new_armor);
@@ -54,7 +55,6 @@ public:
 	void BoostNextAttack(int amount);
 	void ReduceAttackTemporarily(int amount);
 
-	void ResetTurnModifiers();
 };
 
 #endif // !CREATURE
