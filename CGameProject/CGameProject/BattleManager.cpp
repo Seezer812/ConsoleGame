@@ -1,102 +1,143 @@
 ﻿#include "BattleManager.h"
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <regex>
+#include <limits>
+#include "Random.h"
+#include <sstream>
 
 const std::string RESET = "\033[0m";
 const std::string BLUE = "\033[34m";
 const std::string GREEN = "\033[32m";
 const std::string RED = "\033[31m";
 
+BattleManager::BattleManager() {
+    std::ifstream file("json/BattleManager.json");
+    if (file.is_open()) {
+        file >> battleText;
+    }
+    else {
+        std::cerr << "Could not open BattleText.json!\n";
+    }
+}
 
 BattleManager& BattleManager::getInstance() {
     static BattleManager instance;
     return instance;
 }
 
+void BattleManager::PrintTable(Creature player, Creature enemy) {
+    std::cout << "+----------------+----------+----------------+----------+\n";
+    std::cout << "|" << BLUE << " Your Stat      " << RESET << "| "
+        << GREEN << "Value    " << RESET << "|"
+        << BLUE << " Enemy Stat     " << RESET << "| "
+        << RED << "Value    " << RESET << "|\n";
+    std::cout << "+----------------+----------+----------------+----------+\n";
+
+    std::cout << "| " << BLUE << std::left << std::setw(15) << "HP" << RESET << "| "
+        << GREEN << std::left << std::setw(8) << player.GetHp() << RESET << " | "
+        << BLUE << std::left << std::setw(15) << "HP" << RESET << "| "
+        << RED << std::left << std::setw(8) << enemy.GetHp() << RESET << " |\n";
+
+    std::cout << "| " << BLUE << std::left << std::setw(15) << "Armor" << RESET << "| "
+        << GREEN << std::left << std::setw(8) << player.GetPermanentArmor() << RESET << " | "
+        << BLUE << std::left << std::setw(15) << "Armor" << RESET << "| "
+        << RED << std::left << std::setw(8) << enemy.GetPermanentArmor() << RESET << " |\n";
+
+    std::cout << "| " << BLUE << std::left << std::setw(15) << "Strength" << RESET << "| "
+        << GREEN << std::left << std::setw(8) << player.GetStrength() << RESET << " | "
+        << BLUE << std::left << std::setw(15) << "Strength" << RESET << "| "
+        << RED << std::left << std::setw(8) << enemy.GetStrength() << RESET << " |\n";
+
+    std::cout << "+----------------+----------+----------------+----------+\n";
+}
+
+std::string BattleManager::GetText(const std::string& key) {
+    if (battleText.contains(key)) return battleText[key];
+    return "[Missing string: " + key + "]";
+}
+
+std::string BattleManager::Format(const std::string& templateStr, const std::string& var, const std::string& value) {
+    std::string result = templateStr;
+    std::regex pattern("\\{" + var + "\\}");
+    return std::regex_replace(result, pattern, value);
+}
+
 int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
     std::cout << enemy.GetDialogues().at("StartFight")[Random::randint(0, enemy.GetDialogues().at("StartFight").size() - 1)] << "\n";
-    std::cout << "Press Enter to begin the fight...";
+    std::cout << GetText("StartFightPrompt") << "\n";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
 
     while (player.GetHp() > 0 && enemy.GetHp() > 0) {
         system("cls");
 
-        std::cout << "+----------------+----------+----------------+----------+\n";
-        std::cout << "|" << BLUE << " Your Stat      " << RESET << "| "
-            << GREEN << "Value    " << RESET << "|"
-            << BLUE << " Enemy Stat     " << RESET << "| "
-            << RED << "Value    " << RESET << "|\n";
-        std::cout << "+----------------+----------+----------------+----------+\n";
+        PrintTable(player, enemy);
 
-        std::cout << "| " << BLUE << std::left << std::setw(15) << "HP" << RESET << "| "
-            << GREEN << std::left << std::setw(8) << player.GetHp() << RESET << " | "
-            << BLUE << std::left << std::setw(15) << "HP" << RESET << "| "
-            << RED << std::left << std::setw(8) << enemy.GetHp() << RESET << " |\n";
+        int choice = 0;
+        bool valid_input = false;
 
-        std::cout << "| " << BLUE << std::left << std::setw(15) << "Armor" << RESET << "| "
-            << GREEN << std::left << std::setw(8) << player.GetArmor() << RESET << " | "
-            << BLUE << std::left << std::setw(15) << "Armor" << RESET << "| "
-            << RED << std::left << std::setw(8) << enemy.GetArmor() << RESET << " |\n";
+        while (!valid_input) {
+            std::cout << GetText("ChooseAction") << "\n";
+            std::vector<std::string> actions = battleText["Actions"].get<std::vector<std::string>>();
+            for (const auto& action : actions)
+                std::cout << action << "\n";
 
-        std::cout << "| " << BLUE << std::left << std::setw(15) << "Strength" << RESET << "| "
-            << GREEN << std::left << std::setw(8) << player.GetStrength() << RESET << " | "
-            << BLUE << std::left << std::setw(15) << "Strength" << RESET << "| "
-            << RED << std::left << std::setw(8) << enemy.GetStrength() << RESET << " |\n";
+            std::string input;
+            std::getline(std::cin, input);
 
-        std::cout << "+----------------+----------+----------------+----------+\n";
-
-
-
-        std::cout << "Choose your action:\n";
-        std::cout << "1. Attack\n";
-        std::cout << "2. Counter (block & reflect)\n";
-        std::cout << "3. Heal\n";
-        std::cout << "4. Power Hit\n";
-        std::cout << "5. Taunt\n";
-        std::cout << "6. Focus (stronger next hit)\n";
-
-        int choice;
-        std::cin >> choice;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::stringstream ss(input);
+            if (ss >> choice && (choice >= 1 && choice <= 6)) {
+                valid_input = true;
+            }
+            else {
+                std::cout << GetText("InvalidInput") << "\n";
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                system("cls");
+                PrintTable(player, enemy);
+            }
+        }
 
         int player_damage = 0;
 
-        std::cout << "\nYour turn:\n";
+        std::cout << "\n" << GetText("YourTurn") << "\n";
 
-        switch (choice) {
-        case 1:
-            player_damage = player.GetAttack();
-            std::cout << "You dealt: " << player_damage << " damage\n";
-            break;
-        case 2:
-            player_damage = player.GetAttack() / 2;
-            player.SetTemporaryArmor(5);
-            std::cout << "You counter!\n";
-            std::cout << "You dealt: " << player_damage << " damage\n";
-            break;
-        case 3:
-            player.Heal(15);
-            std::cout << "You feel better.\n";
-            break;
-        case 4:
-            if (Random::randint(0, 1) == 1) {
-                player_damage = static_cast<int>(player.GetAttack() * 1.5);
-                std::cout << "You dealt: " << player_damage << " damage\n";
+        if (choice > 0 and choice < 7) {
+            switch (choice) {
+            case 1:
+                player_damage = player.GetAttack();
+                std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
+                break;
+            case 2:
+                player_damage = player.GetAttack() / 2;
+                player.SetTemporaryArmor(5);
+                std::cout << Format(GetText("CounterDealt"), "value", std::to_string(player_damage)) << "\n";
+                break;
+            case 3:
+                player.Heal(15);
+                std::cout << GetText("HealUsed") << "\n";
+                break;
+            case 4:
+                if (Random::randint(0, 1) == 1) {
+                    player_damage = static_cast<int>(player.GetAttack() * 1.5);
+                    std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
+                }
+                else {
+                    std::cout << GetText("Missed") << "\n";
+                }
+                break;
+            case 5:
+                enemy.ReduceAttackTemporarily(5);
+                std::cout << GetText("TauntUsed") << "\n";
+                break;
+            case 6:
+                player.BoostNextAttack(10);
+                std::cout << GetText("FocusUsed") << "\n";
+                break;
             }
-            else {
-                std::cout << "Oh no! You miss\n";
-            }
-            break;
-        case 5:
-            enemy.ReduceAttackTemporarily(5);
-            std::cout << "You provoke your enemy.\n";
-            break;
-        case 6:
-            player.BoostNextAttack(10);
-            std::cout << "You steady your stance...\n";
-            break;
-        default:
-            std::cout << "Invalid input. You lose your turn.\n";
-            break;
+        }
+        else {
+            std::cout << GetText("InvalidInput") << "\n";
         }
 
         enemy.TakeDamage(player_damage);
@@ -106,46 +147,47 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
         int enemy_choice = Random::randint(1, 6);
         int enemy_damage = 0;
 
-        std::cout << "\n" << enemy.GetName() << " turn:\n";
+        std::cout << "\n" << Format(GetText("EnemyTurn"), "enemy", enemy.GetName()) << "\n";
 
         switch (enemy_choice) {
         case 1:
             enemy_damage = enemy.GetAttack();
-            std::cout << enemy.GetName() << " dealt: " << enemy_damage << " damage\n";
+            std::cout << Format(GetText("EnemyAttack"), "enemy", enemy.GetName());
+            std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(enemy_damage)) << "\n";
             break;
         case 2:
             enemy_damage = enemy.GetAttack() / 2;
             enemy.SetTemporaryArmor(5);
-            std::cout << enemy.GetName() << " uses Counter!\n";
-            std::cout << enemy.GetName() << " dealt: " << enemy_damage << " damage\n";
+            std::cout << Format(GetText("EnemyCounter"), "enemy", enemy.GetName());
+            std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(enemy_damage)) << "\n";
             break;
         case 3:
             enemy.Heal(15);
-            std::cout << enemy.GetName() << " heals.\n";
+            std::cout << Format(GetText("EnemyHeal"), "enemy", enemy.GetName()) << "\n";
             break;
         case 4:
             if (Random::randint(0, 1) == 1) {
                 enemy_damage = static_cast<int>(enemy.GetAttack() * 1.5);
-                std::cout << enemy.GetName() << " unleashes a mighty blow!\n";
-                std::cout << enemy.GetName() << " dealt: " << enemy_damage << " damage\n";
+                std::cout << Format(GetText("EnemyPowerHit"), "enemy", enemy.GetName());
+                std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(enemy_damage)) << "\n";
             }
             else {
-                std::cout << enemy.GetName() << " misses!\n";
+                std::cout << Format(GetText("EnemyMissed"), "enemy", enemy.GetName()) << "\n";
             }
             break;
         case 5:
             player.ReduceAttackTemporarily(5);
-            std::cout << enemy.GetName() << " provokes you.\n";
+            std::cout << Format(GetText("EnemyTaunt"), "enemy", enemy.GetName()) << "\n";
             break;
         case 6:
             enemy.BoostNextAttack(10);
-            std::cout << enemy.GetName() << " focuses...\n";
+            std::cout << Format(GetText("EnemyFocus"), "enemy", enemy.GetName()) << "\n";
             break;
         }
 
         player.TakeDamage(enemy_damage);
 
-        std::cout << "\nPress Enter to continue...";
+        std::cout << "\n" << GetText("ContinuePrompt") << "\n";
         std::cin.get();
     }
 
@@ -160,4 +202,3 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
         return 0;
     }
 }
-

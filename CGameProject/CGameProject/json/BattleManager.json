@@ -1,0 +1,30 @@
+{
+  "StartFightPrompt": "Press Enter to begin the fight...",
+  "ChooseAction": "Choose your action:",
+  "Actions": [
+    "1. Attack",
+    "2. Counter (block & reflect)",
+    "3. Heal",
+    "4. Power Hit",
+    "5. Taunt",
+    "6. Focus (stronger next hit)"
+  ],
+  "YourTurn": "Your turn:",
+  "EnemyTurn": "{enemy} turn:",
+  "AttackDealt": "You dealt: {value} damage",
+  "CounterDealt": "You counter!\nYou dealt: {value} damage",
+  "HealUsed": "You feel better.",
+  "Missed": "Oh no! You miss",
+  "TauntUsed": "You provoke your enemy.",
+  "FocusUsed": "You steady your stance...",
+  "InvalidInput": "Invalid input. Enter choice (1-6). Press Enter to continue.",
+  "EnemyAttack": "{enemy}",
+  "EnemyCounter": "{enemy} uses Counter!\n{enemy}",
+  "EnemyHeal": "{enemy} heals.",
+  "EnemyPowerHit": "{enemy} unleashes a mighty blow!\n{enemy}",
+  "EnemyMissed": "{enemy} misses!",
+  "EnemyTaunt": "{enemy} provokes you.",
+  "EnemyFocus": "{enemy} focuses...",
+  "ContinuePrompt": "Press Enter to continue...",
+  "EnemyDealt": " dealt: {value} damage"
+}
