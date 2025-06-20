@@ -12,6 +12,6 @@ int main()
 	Creature Player("json/Player.json");
 	BattleManager& bm = BattleManager::getInstance();
 	int winner;
-	winner = bm.StartRegularBattle(Player, Enemy1);
+	winner = bm.StartBossBattle(Player, Enemy1);
 
 }

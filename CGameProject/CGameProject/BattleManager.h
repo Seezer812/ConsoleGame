@@ -2,12 +2,16 @@
 #include "Creature.h"
 #include <string>
 #include <unordered_map>
+#include <conio.h>
+#include <chrono>
+#include <thread>
 #include "json.hpp"
 
 class BattleManager {
 public:
     static BattleManager& getInstance();
     int StartRegularBattle(Creature& player, Creature& enemy);
+    int StartBossBattle(Creature& player, Creature& boss);
 
 private:
     BattleManager(); // приватный конструктор
