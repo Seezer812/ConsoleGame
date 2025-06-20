@@ -1,14 +1,15 @@
 #ifndef CREATURE
 #define CREATURE
 
+#include "Item.h"
+#include "json.hpp"
+
+#include <unordered_map>
+#include <fstream>
+#include <iostream>
 #include <vector>
 #include <memory>
 #include <string>
-#include <unordered_map>
-#include "Item.h"
-#include "json.hpp"
-#include <fstream>
-#include <iostream>
 
 using json = nlohmann::json;
 

@@ -1,6 +1,6 @@
 #include "Random.h"
 
-int Random::randint(size_t start, size_t end)
+int Random::Randint(size_t start, size_t end)
 {
     if (start > end)
         throw std::logic_error("Logic Error: start > end");
