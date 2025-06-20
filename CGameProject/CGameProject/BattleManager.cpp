@@ -84,6 +84,8 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             for (const auto& action : actions)
                 std::cout << action << "\n";
 
+            std::cout << GetText("EnterText");
+
             std::string input;
             std::getline(std::cin, input);
 
@@ -206,7 +208,7 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
 
 
 int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
-    std::cout << boss.GetDialogues().at("StartFight")[Random::randint(0, boss.GetDialogues().at("StartFight").size() - 1)] << "\n";
+    std::cout << boss.GetDialogues().at("StartFight")[Random::Randint(0, boss.GetDialogues().at("StartFight").size() - 1)] << "\n";
     std::cout << GetText("StartBossBattlePrompt") << "\n";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -219,7 +221,7 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
 
         std::string command;
         for (int i = 0; i < comboLength; ++i) {
-            char c = 'A' + Random::randint(0, 25);
+            char c = 'A' + Random::Randint(0, 25);
             command += c;
         }
 
@@ -257,11 +259,11 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
     system("cls");
 
     if (player.GetHp() > 0) {
-        std::cout << boss.GetDialogues().at("Victory")[Random::randint(0, boss.GetDialogues().at("Victory").size() - 1)] << "\n";
+        std::cout << boss.GetDialogues().at("Victory")[Random::Randint(0, boss.GetDialogues().at("Victory").size() - 1)] << "\n";
         return 1;
     }
     else {
-        std::cout << boss.GetDialogues().at("Defeat")[Random::randint(0, boss.GetDialogues().at("Defeat").size() - 1)] << "\n";
+        std::cout << boss.GetDialogues().at("Defeat")[Random::Randint(0, boss.GetDialogues().at("Defeat").size() - 1)] << "\n";
         return 0;
     }
 }

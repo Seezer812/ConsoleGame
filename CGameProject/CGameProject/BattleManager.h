@@ -13,9 +13,10 @@ class BattleManager {
 public:
     static BattleManager& GetInstance();
     int StartRegularBattle(Creature& player, Creature& enemy);
+    int StartBossBattle(Creature& player, Creature& boss);
 
 private:
-    BattleManager(); // приватный конструктор
+    BattleManager();
     nlohmann::json battle_text;
     std::string GetText(const std::string& key);
     std::string Format(const std::string& templateStr, const std::string& var, const std::string& value);

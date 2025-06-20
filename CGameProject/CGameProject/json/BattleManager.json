@@ -9,6 +9,7 @@
     "5. Taunt",
     "6. Focus (stronger next hit)"
   ],
+  "EnterText": "Enter: ",
   "YourTurn": "Your turn:",
   "EnemyTurn": "{enemy} turn:",
   "AttackDealt": "You dealt: {value} damage",
