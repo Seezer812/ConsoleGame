@@ -6,7 +6,7 @@
 class Random
 {
 public:
-	static int randint(int, int);
+	static int randint(size_t start, size_t end);
 };
 
 
