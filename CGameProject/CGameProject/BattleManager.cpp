@@ -203,3 +203,65 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
         return 0;
     }
 }
+
+
+int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
+    std::cout << boss.GetDialogues().at("StartFight")[Random::randint(0, boss.GetDialogues().at("StartFight").size() - 1)] << "\n";
+    std::cout << GetText("StartBossBattlePrompt") << "\n";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    const int comboLength = 5;
+    const int timeLimitSeconds = 5;
+
+    while (player.GetHp() > 0 && boss.GetHp() > 0) {
+        system("cls");
+        PrintTable(player, boss);
+
+        std::string command;
+        for (int i = 0; i < comboLength; ++i) {
+            char c = 'A' + Random::randint(0, 25);
+            command += c;
+        }
+
+        std::cout << Format(GetText("BossComboPrompt"), "combo", command) << "\n";
+        std::cout << Format(GetText("TimeLimitInfo"), "seconds", std::to_string(timeLimitSeconds)) << "\n";
+
+        auto startTime = std::chrono::steady_clock::now();
+        std::string input;
+        std::getline(std::cin, input);
+        auto endTime = std::chrono::steady_clock::now();
+
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
+        for (auto& c : input) c = std::toupper(c);
+
+        if (input == command && elapsed <= timeLimitSeconds) {
+            std::cout << GetText("PlayerComboSuccess") << "\n";
+            boss.TakeDamage(10);
+        }
+        else {
+            std::cout << GetText("PlayerComboFail") << "\n";
+        }
+
+        if (boss.GetHp() <= 0) break;
+
+        int boss_damage = boss.GetAttack();
+        player.TakeDamage(boss_damage);
+
+        std::cout << Format(GetText("BossAttacks"), "enemy", boss.GetName());
+        std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(boss_damage)) << "\n";
+
+        std::cout << GetText("ContinuePrompt") << "\n";
+        std::cin.get();
+    }
+
+    system("cls");
+
+    if (player.GetHp() > 0) {
+        std::cout << boss.GetDialogues().at("Victory")[Random::randint(0, boss.GetDialogues().at("Victory").size() - 1)] << "\n";
+        return 1;
+    }
+    else {
+        std::cout << boss.GetDialogues().at("Defeat")[Random::randint(0, boss.GetDialogues().at("Defeat").size() - 1)] << "\n";
+        return 0;
+    }
+}

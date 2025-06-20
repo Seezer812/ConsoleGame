@@ -26,5 +26,11 @@
   "EnemyTaunt": "{enemy} provokes you.",
   "EnemyFocus": "{enemy} focuses...",
   "ContinuePrompt": "Press Enter to continue...",
-  "EnemyDealt": " dealt: {value} damage"
+  "EnemyDealt": " dealt: {value} damage",
+  "StartBossBattlePrompt": "Get ready! You need to type the correct letters to deal damage!",
+  "BossComboPrompt": "Enter the sequence: {combo}",
+  "TimeLimitInfo": "You have {seconds} seconds!",
+  "PlayerComboSuccess": "You made it! Critical hit to the boss!",
+  "PlayerComboFail": "You failed or were too slow! No damage dealt!",
+  "BossAttacks": "{enemy} strikes you!"
 }
