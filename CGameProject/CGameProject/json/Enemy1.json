@@ -17,26 +17,6 @@
       "An appointment? With your face!",
       "You're already dead. You just haven't stopped breathing yet..."
     ],
-    "Attack": [
-      "Through the marshes – to your death!",
-      "I'll drag you into the swamp like all the others...",
-      "Whisper your prayers while you still can...",
-      "Did you think I was just a bedtime story?",
-      "Well, hero? Got a little dirty, didn't you?"
-    ],
-    "Defense": [
-      "Reeds, envelop me!",
-      "Earth, protect your child!",
-      "Darkness, cover me!",
-      "Shadows, shield my face!"
-    ],
-    "GetDamage": [
-      "DON'T YOU DARE TOUCH ME!",
-      "You'll pay for this!",
-      "I've survived worse than you...",
-      "The roots whisper – not yet time to die...",
-      "Ooh, that stings... hee-hee!"
-    ],
     "Victory": [
       "Pff... even death is better than your chatter...",
       "The darkness... smiles upon you...",

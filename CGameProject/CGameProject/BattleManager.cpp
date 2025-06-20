@@ -84,6 +84,8 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             for (const auto& action : actions)
                 std::cout << action << "\n";
 
+            std::cout << GetText("EnterText");
+
             std::string input;
             std::getline(std::cin, input);
 
