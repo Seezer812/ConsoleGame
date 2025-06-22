@@ -1,5 +1,4 @@
 ﻿#include "BattleManager.h"
-#include "Random.h"
 
 #include <fstream>
 #include <iostream>
@@ -105,42 +104,37 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
 
         std::cout << "\n" << GetText("YourTurn") << "\n";
 
-        if (choice > 0 and choice < 7) {
-            switch (choice) {
-            case 1:
-                player_damage = player.GetAttack();
+        switch (choice) {
+        case 1:
+            player_damage = player.GetAttack();
+            std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
+            break;
+        case 2:
+            player_damage = player.GetAttack() / 2;
+            player.SetTemporaryArmor(5);
+            std::cout << Format(GetText("CounterDealt"), "value", std::to_string(player_damage)) << "\n";
+            break;
+        case 3:
+            player.Heal(15);
+            std::cout << GetText("HealUsed") << "\n";
+            break;
+        case 4:
+            if (Random::Randint(0, 1) == 1) {
+                player_damage = static_cast<int>(player.GetAttack() * 1.5);
                 std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
-                break;
-            case 2:
-                player_damage = player.GetAttack() / 2;
-                player.SetTemporaryArmor(5);
-                std::cout << Format(GetText("CounterDealt"), "value", std::to_string(player_damage)) << "\n";
-                break;
-            case 3:
-                player.Heal(15);
-                std::cout << GetText("HealUsed") << "\n";
-                break;
-            case 4:
-                if (Random::Randint(0, 1) == 1) {
-                    player_damage = static_cast<int>(player.GetAttack() * 1.5);
-                    std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
-                }
-                else {
-                    std::cout << GetText("Missed") << "\n";
-                }
-                break;
-            case 5:
-                enemy.ReduceAttackTemporarily(5);
-                std::cout << GetText("TauntUsed") << "\n";
-                break;
-            case 6:
-                player.BoostNextAttack(10);
-                std::cout << GetText("FocusUsed") << "\n";
-                break;
             }
-        }
-        else {
-            std::cout << GetText("InvalidInput") << "\n";
+            else {
+                std::cout << GetText("Missed") << "\n";
+            }
+            break;
+        case 5:
+            enemy.ReduceAttackTemporarily(5);
+            std::cout << GetText("TauntUsed") << "\n";
+            break;
+        case 6:
+            player.BoostNextAttack(10);
+            std::cout << GetText("FocusUsed") << "\n";
+            break;
         }
 
         enemy.TakeDamage(player_damage);

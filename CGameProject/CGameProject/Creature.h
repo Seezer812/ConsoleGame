@@ -31,6 +31,7 @@ private:
 
 public:
 	Creature(const std::string& path);
+	Creature() = default;
 
 	std::unordered_map <std::string, std::vector<std::string>> GetDialogues();
 	std::vector<std::shared_ptr<Item>>& GetInventory();

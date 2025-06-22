@@ -1,13 +1,12 @@
+#include "Move.h"
 #include "Creature.h"
-#include "BattleManager.h"
 
 #include <iostream>
 
 int main()
 {
-	Creature Enemy1("json/Enemy1.json");
-	Creature Player("json/Player.json");
-	BattleManager& bm = BattleManager::GetInstance();
-	int winner;
-	winner = bm.StartBossBattle(Player, Enemy1);
+	std::string way = "json/World1Info.json";
+	Creature player("json/Player.json");
+	Move mv(way, player);
+	mv.StartChooseWay();
 }

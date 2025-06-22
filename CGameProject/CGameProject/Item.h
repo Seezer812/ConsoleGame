@@ -2,17 +2,27 @@
 #define ITEM
 
 #include <string>
+#include <fstream>
+
+#include "json.hpp"
+using json = nlohmann::json;
 
 class Item
 {
 private:
-	const std::wstring name;
-	const int price;
+	std::string name;
+	std::string type;
+	int strength;
+	int price;
 public:
-	const void GetName() const;
-	void GetPrice() const;
+	Item(std::string path);
 
-	Item(const std::wstring& name, const int price);
+	std::string GetName();
+	std::string GetType();
+
+	int GetStrength();
+	int GetPrice();
+
 };
 
 #endif // !ITEM
