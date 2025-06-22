@@ -22,22 +22,46 @@ Item::Item(std::string path)
     price = j["price"].get<int>();
 }
 
-std::string Item::GetName()
+std::string Item::GetName() const
 {
     return name;
 }
 
-std::string Item::GetType()
+std::string Item::GetType() const
 {
     return type;
 }
 
-int Item::GetStrength()
+int Item::GetStrength() const
 {
     return strength;
 }
 
-int Item::GetPrice()
+int Item::GetPrice() const
 {
     return price;
 }
+
+void Item::SetName(std::string new_name)
+{
+    name = new_name;
+}
+
+void Item::SetType(std::string new_type)
+{
+    type = new_type;
+}
+
+void Item::SetStrength(int new_strength)
+{
+    strength = new_strength;
+}
+
+void Item::SetPrice(int new_price)
+{
+    price = new_price;
+}
+
+
+
+

@@ -17,12 +17,18 @@ private:
 public:
 	Item(std::string path);
 
-	std::string GetName();
-	std::string GetType();
+	std::string GetName() const;
+	std::string GetType() const;
 
-	int GetStrength();
-	int GetPrice();
+	int GetStrength() const;
+	int GetPrice() const;
 
+
+	void SetName(std::string new_name);
+	void SetType(std::string new_type);
+
+	void SetStrength(int new_strength);
+	void SetPrice(int new_price);
 };
 
 #endif // !ITEM
