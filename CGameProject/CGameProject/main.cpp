@@ -1,13 +1,14 @@
 #include "Creature.h"
 #include "BattleManager.h"
-
+#include "Item.h"
+#include "InventoryManager.h"
 #include <iostream>
 
 int main()
 {
-	Creature Enemy1("json/Enemy1.json");
-	Creature Player("json/Player.json");
-	BattleManager& bm = BattleManager::GetInstance();
-	int winner;
-	winner = bm.StartBossBattle(Player, Enemy1);
+	InventoryManager inventory;
+	Creature player{"json/Player.json"};
+
+	player.GetInventory().ListItems();
+
 }

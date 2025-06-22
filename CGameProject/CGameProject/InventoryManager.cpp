@@ -57,7 +57,7 @@ void InventoryManager::ListTypeItems(std::string type) const {
         if (item.GetType() == type) {
             i++;
             std::cout << i << ". " << item.GetName() << " ("
-                <<  item.GetStrength() << ")\n";
+                << item.GetStrength() << ")\n";
         }
     }
 

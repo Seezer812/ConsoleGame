@@ -3,6 +3,7 @@
 
 #include "Item.h"
 #include "json.hpp"
+#include "InventoryManager.h"
 
 #include <unordered_map>
 #include <fstream>
@@ -27,13 +28,13 @@ private:
 	int attack_penalty = 0;
 
 	std::unordered_map <std::string, std::vector<std::string>> dialogues;
-	std::vector <std::shared_ptr<Item>> inventory;
+	InventoryManager inventory;
 
 public:
 	Creature(const std::string& path);
 
 	std::unordered_map <std::string, std::vector<std::string>> GetDialogues();
-	std::vector<std::shared_ptr<Item>>& GetInventory();
+	InventoryManager GetInventory();
 
 	std::string GetName() const;
 	int GetStrength() const;
@@ -50,7 +51,7 @@ public:
 	void TakeDamage(int amount);
 	bool IsAlive() const;
 
-	// New mechanics
+	void SpendMoney(int value);
 	void SetTemporaryArmor(int value);
 	void Heal(int amount);
 	void BoostNextAttack(int amount);

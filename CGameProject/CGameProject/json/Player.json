@@ -2,7 +2,13 @@
   "Name": "Billy Nogami",
   "Hp": "50000",
   "Strength": "10",
-  "Armor":  "0",
+  "Armor": "0",
+  "Money": "1000",
+  "Inventory": [
+    "json/WoodSword.json",
+    "json/IronSword.json",
+    "json/LeatherArmor.json"
+  ],
   "Dialogues": {
     "Attack": [
       "Every strike of mine is a step towards victory and freedom!",

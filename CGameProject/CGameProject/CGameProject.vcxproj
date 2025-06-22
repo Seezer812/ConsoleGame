@@ -130,12 +130,18 @@
   <ItemGroup>
     <ClCompile Include="BattleManager.cpp" />
     <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="InventoryManager.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Market.cpp" />
     <ClCompile Include="Random.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleManager.h" />
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="InventoryManager.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Market.h" />
     <ClInclude Include="Random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

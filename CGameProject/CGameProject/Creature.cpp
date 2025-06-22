@@ -1,9 +1,9 @@
-#include "Creature.h"
+п»ї#include "Creature.h"
 
 Creature::Creature(const std::string& json_filename) {
 	std::ifstream file(json_filename);
 	if (!file.is_open()) {
-		throw std::runtime_error("Не удалось открыть файл JSON: " + json_filename);
+		throw std::runtime_error("Can't open JSON: " + json_filename);
 	}
 
 	json j;
@@ -52,6 +52,21 @@ Creature::Creature(const std::string& json_filename) {
 		}
 	}
 
+	if (j.contains("Inventory") && j["Inventory"].is_array()) {
+		for (const auto& path : j["Inventory"]) {
+			if (path.is_string()) {
+				try {
+					Item item(path.get<std::string>());
+					inventory.AddItem(item);
+				}
+				catch (const std::exception& e) {
+					std::cerr << "Failed to load item from " << path.get<std::string>()
+						<< ": " << e.what() << '\n';
+				}
+			}
+		}
+	}
+
 	temp_armor = 0;
 	attack_boost = 0;
 	attack_penalty = 0;
@@ -90,7 +105,7 @@ std::unordered_map <std::string, std::vector<std::string>> Creature::GetDialogue
 	return dialogues;
 }
 
-std::vector<std::shared_ptr<Item>>& Creature::GetInventory()
+InventoryManager Creature::GetInventory()
 {
 	return inventory;
 }
@@ -144,5 +159,10 @@ void Creature::BoostNextAttack(int amount) {
 
 void Creature::ReduceAttackTemporarily(int amount) {
 	attack_penalty = amount;
+}
+
+void Creature::SpendMoney(int value)
+{
+	money -= value;
 }
 

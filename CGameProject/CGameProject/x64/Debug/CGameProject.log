@@ -1,2 +1,5 @@
-﻿  main.cpp
+﻿  BattleManager.cpp
+  Creature.cpp
+  main.cpp
+  Создание кода...
   CGameProject.vcxproj -> D:\ConsoleGame\CGameProject\x64\Debug\CGameProject.exe
