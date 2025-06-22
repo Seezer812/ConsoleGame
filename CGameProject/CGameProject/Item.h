@@ -15,6 +15,7 @@ private:
 	int strength;
 	int price;
 public:
+
 	Item();
 	Item(std::string path);
 
@@ -30,6 +31,7 @@ public:
 
 	void SetStrength(int new_strength);
 	void SetPrice(int new_price);
+
 };
 
 #endif // !ITEM

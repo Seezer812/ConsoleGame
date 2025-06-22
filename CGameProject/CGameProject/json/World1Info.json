@@ -1,0 +1,9 @@
+{
+  "PathEnemy1": "json/Enemy1.json",
+  "PathEnemy2": "json/Enemy2.json",
+  "PathBoss": "json/Boss1.json",
+  "StartPromt": "You stand at a crossroads - countless paths stretch before you. Which will you take?\n press enter to choose.",
+  "Choices": " 1. Enemies room \n 2. Boss room \n 3. Market \n 4. Base location ",
+  "InvalidInput": "Invalid input. Enter choice (1-4). Press Enter to continue.",
+  "EnterText": "Enter: "
+}

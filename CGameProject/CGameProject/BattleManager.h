@@ -3,6 +3,7 @@
 
 #include "json.hpp"
 #include "Creature.h"
+#include "Random.h"
 
 #include <string>
 #include <unordered_map>

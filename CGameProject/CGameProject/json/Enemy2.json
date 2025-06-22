@@ -1,0 +1,31 @@
+﻿{
+  "Name": "Viy",
+  "Hp": "100",
+  "Strength": "15",
+  "Armor": "0",
+  "Dialogues": {
+    "StartFight": [
+      "My eyelids rise... Behold your doom!",
+      "The earth trembles... The darkness calls... You are doomed.",
+      "You came to fight me? Amusing worm...",
+
+      "I saw your death... Long before you were born.",
+      "I am VIY! The one who sees through ages! Who will blind you in your final moment!",
+      "Your soul will become an ember in my hearth...",
+
+      "None can withstand my gaze... You are no exception.",
+      "Iron forks will lift my lids... And you will die.",
+      "LOOK AT ME... AND DIE."
+    ],
+    "Victory": [
+      "My eyelids... fall once more... But the darkness still waits...",
+      "You are stronger than I anticipated... But know this – I will return.",
+      "You've defeated me... but not the fear I've planted in your heart."
+    ],
+    "Defeat": [
+      "You dared meet my gaze... Now your body is but an empty shell.",
+      "Another light extinguished. The world sinks back into darkness.",
+      "You thought you could win? I saw your end long before this fight began."
+    ]
+  }
+}

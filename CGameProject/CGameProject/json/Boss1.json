@@ -1,0 +1,31 @@
+{
+  "Name": "Chernobog",
+  "Hp": "500",
+  "Strength": "35",
+  "Armor": "0",
+  "Dialogues": {
+    "StartFight": [
+      "The seal is broken� Now you are mine.",
+      "The darkness has come for your soul� Try to run.",
+      "You dare challenge the Void itself? Fool.",
+
+      "A feeble spark before eternal night� Be extinguished!",
+      "You think you�re the first to try and overthrow me? You�re just another sacrifice.",
+      "All flesh is dust. All light is shadow. I am the end of all things.",
+
+      "You fight not me� but inevitability itself.",
+      "I will crush your hope!",
+      "Do you hear the whispers of the shadows? They're already calling your name..."
+    ],
+    "Victory": [
+      "You... are stronger than I anticipated... But the dark will still consume this world...",
+      "This is not the end... You've merely delayed the inevitable.",
+      "You've defeated me... but you haven't defeated the Dark itself."
+    ],
+    "Defeat": [
+      "You were but a fleeting glimmer before the eternal dark...",
+      "Another light extinguished. The world grows purer.",
+      "You fought desperately... but desperation was all you had."
+    ]
+  }
+}

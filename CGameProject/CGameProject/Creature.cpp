@@ -3,7 +3,9 @@
 Creature::Creature(const std::string& json_filename) {
 	std::ifstream file(json_filename);
 	if (!file.is_open()) {
+
 		throw std::runtime_error("Can't open JSON: " + json_filename);
+
 	}
 
 	json j;

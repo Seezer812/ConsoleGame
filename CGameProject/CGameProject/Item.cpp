@@ -1,6 +1,8 @@
 #include "Item.h"
 
+
 Item::Item() : name("Unknown"), type("Unknown"), strength(0), price(0) {}
+
 
 Item::Item(std::string path)
 {
@@ -23,10 +25,12 @@ Item::Item(std::string path)
     price = j["price"].get<int>();
 }
 
+
 std::string Item::GetName() const
 {
     return name;
 }
+
 
 std::string Item::GetType() const
 {
@@ -38,9 +42,11 @@ int Item::GetStrength() const
     return strength;
 }
 
-int Item::GetPrice() const
+
+std::string Item::GetType()
+
 {
-    return price;
+    return type;
 }
 
 void Item::SetName(std::string new_name)
@@ -63,6 +69,13 @@ void Item::SetPrice(int new_price)
     price = new_price;
 }
 
+int Item::GetStrength()
+{
+    return strength;
+}
 
-
+int Item::GetPrice()
+{
+    return price;
+}
 
