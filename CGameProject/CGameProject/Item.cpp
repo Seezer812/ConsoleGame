@@ -1,5 +1,6 @@
 #include "Item.h"
 
+Item::Item() : name("Unknown"), type("Unknown"), strength(0), price(0) {}
 
 Item::Item(std::string path)
 {

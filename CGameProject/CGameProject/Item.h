@@ -15,6 +15,7 @@ private:
 	int strength;
 	int price;
 public:
+	Item();
 	Item(std::string path);
 
 	std::string GetName() const;
