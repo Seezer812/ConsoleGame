@@ -1,0 +1,6 @@
+{
+  "name": "HealingPotion",
+  "type": "Potion",
+  "strength": 25,
+  "price": 60
+}

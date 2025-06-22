@@ -1,28 +1,9 @@
-{
-  "Items": [
-    {
-      "name": "Iron Sword",
-      "type": "Weapon",
-      "strength": 10,
-      "price": 30
-    },
-    {
-      "name": "Leather Armor",
-      "type": "Armor",
-      "strength": 5,
-      "price": 25
-    },
-    {
-      "name": "Apple",
-      "type": "Food",
-      "strength": 2,
-      "price": 5
-    },
-    {
-      "name": "Healing Potion",
-      "type": "Potion",
-      "strength": 15,
-      "price": 20
-    }
-  ]
-}
+[
+  "json/IronSword.json",
+  "json/IronArmor.json",
+  "json/LeatherArmor.json",
+  "json/IronSword.json",
+  "json/HealingPotion.json",
+  "json/Chainbreaker.json",
+  "json/ArchangelCuirass.json"
+]

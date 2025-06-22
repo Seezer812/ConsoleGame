@@ -1,6 +1,6 @@
 {
-  "name": "Wood Sword",
-  "type": "Weapon",
+  "name": "LeatherArmor",
+  "type": "Armor",
   "strength": 5,
   "price": 60
 }
