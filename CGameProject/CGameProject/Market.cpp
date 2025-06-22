@@ -48,36 +48,38 @@ InventoryManager& Market::GetStock() {
 }
 
 
-bool Market::BuyItem(Creature& buyer) {
+void Market::BuyItem(Creature& buyer) {
 
-    DisplayItems();
-    std::cout << "- Exit\n";
-    std::cout << "Your money: " << buyer.GetMoney() << std::endl;
-    std::string i;
-    std::cin >> i;
-    if (i != "Exit") {
-        if (stock.HasItem(i)) {
-            if (stock.GetItem(i)->GetPrice() <= buyer.GetMoney()) {
-                system("cls");
-                std::cout << "You buy: " << i << "\n";
-                buyer.SpendMoney(stock.GetItem(i)->GetPrice());
-                stock.RemoveItem(i);
 
+    while (true) {
+        DisplayItems();
+        std::cout << "- Exit\n";
+        std::cout << "Your money: " << buyer.GetMoney() << std::endl;
+        std::string i;
+        std::cin >> i;
+        if (i != "Exit") {
+            if (stock.HasItem(i)) {
+                if (stock.GetItem(i)->GetPrice() <= buyer.GetMoney()) {
+                    system("cls");
+                    std::cout << "You buy: " << i << "\n";
+                    buyer.SpendMoney(stock.GetItem(i)->GetPrice());
+                    buyer.AddItem(*stock.GetItem(i));
+                    stock.RemoveItem(i);
+
+                }
+                else {
+                    system("cls");
+                    std::cout << "You don't have enough money\n";
+                }
             }
             else {
                 system("cls");
-                std::cout << "You don't have enough money\n";
+                std::cout << "You enter wrong item name\n";
             }
         }
         else {
-            system("cls");
-            std::cout << "You enter wrong item name\n";
+            break;
         }
-        return true;
     }
-    else {
-        return false;
-    }
-
 }
 

@@ -3,12 +3,19 @@
 #include "Item.h"
 #include "InventoryManager.h"
 #include <iostream>
+#include "Move.h"
 
 int main()
 {
-	InventoryManager inventory;
-	Creature player{"json/Player.json"};
+	Creature Player{"json/Player.json"};
+	Market market{ "json/Market1.json" };
+	Move menu("json/World1Info.json", Player, market);
 
-	player.GetInventory().ListItems();
+	while (true) {
+
+		menu.StartChooseWay();
+
+
+	}
 
 }

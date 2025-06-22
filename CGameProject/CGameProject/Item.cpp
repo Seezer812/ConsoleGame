@@ -43,11 +43,7 @@ int Item::GetStrength() const
 }
 
 
-std::string Item::GetType()
 
-{
-    return type;
-}
 
 void Item::SetName(std::string new_name)
 {
@@ -69,12 +65,9 @@ void Item::SetPrice(int new_price)
     price = new_price;
 }
 
-int Item::GetStrength()
-{
-    return strength;
-}
 
-int Item::GetPrice()
+
+int Item::GetPrice() const
 {
     return price;
 }

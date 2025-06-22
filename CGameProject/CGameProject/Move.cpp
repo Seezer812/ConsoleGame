@@ -4,9 +4,10 @@
 #include <sstream>
 #include <iostream>
 
-Move::Move(std::string& path, Creature& Player)
+
+Move::Move(std::string path, Creature& Player, Market& Market)
+    : player(Player), market(Market)
 {
-    player = Player;
 
     std::ifstream file(path);
     if (!file.is_open()) {
@@ -36,6 +37,48 @@ std::string Move::GetMoveText(const std::string& key)
 {
     if (move_text.contains(key)) return move_text[key];
     return "[Missing string: " + key + "]";
+}
+
+void Move::UseItem()
+{
+
+    while (true) {
+
+        player.GetInventory().ListItems();
+        std::cout << "- Exit\n";
+
+        std::string i;
+        std::cin >> i;
+
+        if (i != "Exit") {
+            if (player.GetInventory().HasItem(i)) {
+                Item* item = player.GetInventory().GetItem(i);
+                if (player.GetInventory().GetItem(i)->GetType() == "Weapon") {
+                    system("cls");
+                    player.SetActiveWeapon(*item);
+                    std::cout << "You take " << player.GetInventory().GetItem(i)->GetName();
+                }
+                else if (player.GetInventory().GetItem(i)->GetType() == "Armor") {
+                    system("cls");
+                    player.SetActiveArmor(*item);
+                    std::cout << "You equip " << player.GetInventory().GetItem(i)->GetName();
+                }
+                else if (player.GetInventory().GetItem(i)->GetType() == "Potion") {
+                    system("cls");
+                    player.Heal(player.GetInventory().GetItem(i)->GetStrength());
+                    std::cout << "You use " << player.GetInventory().GetItem(i)->GetName();
+                    player.RemoveItem(i);
+                }
+            }
+            else {
+                system("cls");
+                std::cout << "You enter wrong item name\n";
+            }
+        }
+        else {
+            break;
+        }
+    }
 }
 
 void Move::StartChooseWay()
@@ -73,11 +116,12 @@ void Move::StartChooseWay()
             bm.StartBossBattle(player, boss);
             break;
         case 3:
-
+            market.BuyItem(player);
             break;
         case 4:
-
+            UseItem();
             break;
+
         default:
             break;
         }

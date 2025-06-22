@@ -22,11 +22,6 @@ public:
     void ListTypeItems(std::string type) const;
 
 
-    void SetActiveSword();
-    void SetActiveArmor();
-    Item GetActiveSword();
-    Item GetActiveArmor();
-
     const std::vector<Item>& GetAllItems() const;
 };
 

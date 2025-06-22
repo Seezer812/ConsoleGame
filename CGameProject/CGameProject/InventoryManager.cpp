@@ -1,4 +1,5 @@
 #include "InventoryManager.h"
+
 #include <iostream>
 #include <fstream>
 
@@ -63,49 +64,6 @@ void InventoryManager::ListTypeItems(std::string type) const {
 
 }
 
-void InventoryManager::SetActiveSword()
-{
-    ListTypeItems("Weapon");
-    int i;
-    int j = 0;
-    std::cin >> i;
-    for (const auto& item : items) {
-        if (item.GetType() == "Weapon") {
-            j++;
-            if (i = j) {
-                active_sword = item;
-                break;
-            }
-        }
-    }
-}
-
-void InventoryManager::SetActiveArmor()
-{
-    ListTypeItems("Armor");
-    int i;
-    int j = 0;
-    std::cin >> i;
-    for (const auto& item : items) {
-        if (item.GetType() == "Armor") {
-            j++;
-            if (i = j) {
-                active_armor = item;
-                break;
-            }
-        }
-    }
-}
-
-Item InventoryManager::GetActiveSword()
-{
-    return active_sword;
-}
-
-Item InventoryManager::GetActiveArmor()
-{
-    return active_armor;
-}
 
 const std::vector<Item>& InventoryManager::GetAllItems() const {
     return items;

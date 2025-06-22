@@ -112,6 +112,16 @@ InventoryManager Creature::GetInventory()
 	return inventory;
 }
 
+void Creature::AddItem(Item item)
+{
+	inventory.AddItem(item);
+}
+
+void Creature::RemoveItem(std::string name)
+{
+	inventory.RemoveItem(name);
+}
+
 void Creature::SetHp(int new_hp)
 {
 	hp = new_hp;
@@ -125,6 +135,16 @@ void Creature::SetArmor(int new_armor)
 void Creature::SetMoney(int new_money)
 {
 	money = new_money;
+}
+
+void Creature::SetActiveWeapon(Item weapon)
+{
+	active_weapon = weapon;
+}
+
+void Creature::SetActiveArmor(Item armor)
+{
+	active_armor = armor;
 }
 
 int Creature::GetAttack() {

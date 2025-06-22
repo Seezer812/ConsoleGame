@@ -27,6 +27,9 @@ private:
 	int attack_boost = 0;
 	int attack_penalty = 0;
 
+	Item active_weapon;
+	Item active_armor;
+
 	std::unordered_map <std::string, std::vector<std::string>> dialogues;
 	InventoryManager inventory;
 
@@ -36,6 +39,8 @@ public:
 
 	std::unordered_map <std::string, std::vector<std::string>> GetDialogues();
 	InventoryManager GetInventory();
+	void AddItem(Item item);
+	void RemoveItem(std::string name);
 
 	std::string GetName() const;
 	int GetStrength() const;
@@ -47,6 +52,8 @@ public:
 	void SetHp(int new_hp);
 	void SetArmor(int new_armor);
 	void SetMoney(int new_money);
+	void SetActiveWeapon(Item weapon);
+	void SetActiveArmor(Item armor);
 
 	int GetAttack();
 	void TakeDamage(int amount);

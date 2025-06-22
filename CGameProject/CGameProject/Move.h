@@ -2,7 +2,7 @@
 #define MOVE
 
 #include "json.hpp"
-
+#include "Market.h"
 #include "BattleManager.h";
 
 #include <string>
@@ -25,8 +25,12 @@ private:
 	BattleManager& bm = BattleManager::GetInstance();
 	Creature player;
 	Creature boss;
+	Market market;
 public:
-	Move(std::string& path, Creature& player);
+
+	Move(std::string path, Creature& Player, Market& Market);
+
+	void UseItem();
 	void StartChooseWay();
 };
 

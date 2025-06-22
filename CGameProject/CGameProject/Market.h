@@ -14,9 +14,11 @@ private:
     std::string path;
 public:
     Market(const std::string& jsonPath);
+    Market() = default;
+
     void DisplayItems() const;
     InventoryManager& GetStock();
-    bool BuyItem(Creature& buyer);
+    void BuyItem(Creature& buyer);
 };
 
 #endif // MARKET_H
