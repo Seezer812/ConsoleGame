@@ -26,6 +26,8 @@ public:
     void SetActiveArmor();
     Item GetActiveSword();
     Item GetActiveArmor();
+
+    const std::vector<Item>& GetAllItems() const;
 };
 
 #endif // INVENTORY_MANAGER_H

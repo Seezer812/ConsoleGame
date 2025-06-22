@@ -106,3 +106,7 @@ Item InventoryManager::GetActiveArmor()
 {
     return active_armor;
 }
+
+const std::vector<Item>& InventoryManager::GetAllItems() const {
+    return items;
+}

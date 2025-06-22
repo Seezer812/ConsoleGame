@@ -1,57 +1,83 @@
-//#include "Market.h"
-//#include "json.hpp"
-//#include <iostream>
-//#include <iomanip>
-//#include <fstream>
-//
-//using json = nlohmann::json;
-//
-//Market::Market(const std::string& jsonPath) {
-//    std::ifstream file(jsonPath);
-//    if (!file.is_open()) {
-//        std::cerr << "Failed to open market JSON.\n";
-//        return;
-//    }
-//
-//    json data;
-//    file >> data;
-//
-//    for (const auto& entry : data["Items"]) {
-//        stock.emplace_back(entry);
-//    }
-//}
-//
-//void Market::DisplayItems() const {
-//    if (stock.empty()) {
-//        std::cout << "Market is empty.\n";
-//        return;
-//    }
-//
-//    std::cout << std::left
-//        << std::setw(3) << "#"
-//        << std::setw(15) << "Name"
-//        << std::setw(10) << "Type"
-//        << std::setw(10) << "Strength"
-//        << std::setw(6) << "Price\n";
-//
-//    int i = 1;
-//    for (const auto& item : stock) {
-//        std::cout << std::setw(3) << i++
-//            << std::setw(15) << item.GetName()
-//            << std::setw(10) << item.GetType()
-//            << std::setw(10) << item.GetStrength()
-//            << std::setw(6) << item.GetPrice() << "\n";
-//    }
-//}
-//
-//void Market::DisplayTypeItems(const std::string& type) const {
-//    int i = 1;
-//    for (const auto& item : stock) {
-//        if (item.GetType() == type) {
-//            std::cout << i << ". " << item.GetName()
-//                << " (Strength: " << item.GetStrength()
-//                << ", Price: " << item.GetPrice() << ")\n";
-//        }
-//        ++i;
-//    }
-//}
+#include "Market.h"
+#include "json.hpp"
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+
+using json = nlohmann::json;
+
+Market::Market(const std::string& jsonPath) {
+    std::ifstream file(jsonPath);
+    if (!file.is_open()) {
+        throw std::runtime_error("Cannot open market JSON file: " + jsonPath);
+    }
+
+    json itemPathsJson;
+    file >> itemPathsJson;
+
+    if (!itemPathsJson.is_array()) {
+        throw std::runtime_error("Invalid market JSON format: expected array of paths");
+    }
+
+    for (const auto& path : itemPathsJson) {
+        if (!path.is_string()) continue;
+
+        try {
+            Item item(path.get<std::string>());
+            stock.AddItem(item);
+        }
+        catch (const std::exception& e) {
+            std::cerr << "Failed to load item from: " << path << " (" << e.what() << ")" << std::endl;
+        }
+    }
+    path = jsonPath;
+}
+
+void Market::DisplayItems() const {
+    std::cout << "Items available in the market:\n";
+    if (!stock.GetAllItems().empty()) {
+        stock.ListItems();
+    }
+    else {
+        std::cout << "You buy all items\n";
+    }
+}
+
+InventoryManager& Market::GetStock() {
+    return stock;
+}
+
+
+bool Market::BuyItem(Creature& buyer) {
+
+    DisplayItems();
+    std::cout << "- Exit\n";
+    std::cout << "Your money: " << buyer.GetMoney() << std::endl;
+    std::string i;
+    std::cin >> i;
+    if (i != "Exit") {
+        if (stock.HasItem(i)) {
+            if (stock.GetItem(i)->GetPrice() <= buyer.GetMoney()) {
+                system("cls");
+                std::cout << "You buy: " << i << "\n";
+                buyer.SpendMoney(stock.GetItem(i)->GetPrice());
+                stock.RemoveItem(i);
+
+            }
+            else {
+                system("cls");
+                std::cout << "You don't have enough money\n";
+            }
+        }
+        else {
+            system("cls");
+            std::cout << "You enter wrong item name\n";
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
