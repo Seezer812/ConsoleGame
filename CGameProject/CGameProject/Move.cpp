@@ -41,42 +41,48 @@ std::string Move::GetMoveText(const std::string& key)
 
 void Move::UseItem()
 {
-
     while (true) {
-
         player.GetInventory().ListItems();
         std::cout << "- Exit\n";
 
         std::string i;
         std::cin >> i;
 
-        if (i != "Exit") {
-            if (player.GetInventory().HasItem(i)) {
-                Item* item = player.GetInventory().GetItem(i);
-                if (player.GetInventory().GetItem(i)->GetType() == "Weapon") {
-                    system("cls");
-                    player.SetActiveWeapon(*item);
-                    std::cout << "You take " << player.GetInventory().GetItem(i)->GetName();
-                }
-                else if (player.GetInventory().GetItem(i)->GetType() == "Armor") {
-                    system("cls");
-                    player.SetActiveArmor(*item);
-                    std::cout << "You equip " << player.GetInventory().GetItem(i)->GetName();
-                }
-                else if (player.GetInventory().GetItem(i)->GetType() == "Potion") {
-                    system("cls");
-                    player.Heal(player.GetInventory().GetItem(i)->GetStrength());
-                    std::cout << "You use " << player.GetInventory().GetItem(i)->GetName();
-                    player.RemoveItem(i);
-                }
-            }
-            else {
-                system("cls");
-                std::cout << "You enter wrong item name\n";
-            }
+        if (i == "Exit")
+            break;
+
+        if (!player.GetInventory().HasItem(i)) {
+            system("cls");
+            std::cout << "You entered an incorrect item name\n";
+            continue;
+        }
+
+        Item* item = player.GetInventory().GetItem(i);
+        if (!item) {
+            std::cout << "Error: item not found.\n";
+            continue;
+        }
+
+        std::string type = item->GetType();
+        std::string name = item->GetName();
+
+        system("cls");
+
+        if (type == "Weapon") {
+            player.SetActiveWeapon(*item);
+            std::cout << "You equipped weapon: " << name << "\n";
+        }
+        else if (type == "Armor") {
+            player.SetActiveArmor(*item);
+            std::cout << "You equipped armor: " << name << "\n";
+        }
+        else if (type == "Potion") {
+            player.Heal(item->GetStrength());
+            std::cout << "You used potion: " << name << "\n";
+            player.RemoveItem(i);
         }
         else {
-            break;
+            std::cout << "Unknown item type.\n";
         }
     }
 }

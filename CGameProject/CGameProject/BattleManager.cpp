@@ -206,10 +206,10 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
     std::cout << GetText("StartBossBattlePrompt") << "\n";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    const int comboLength = 5;
     const int timeLimitSeconds = 5;
 
     while (player.GetHp() > 0 && boss.GetHp() > 0) {
+        const int comboLength = Random::Randint(3, 8);
         system("cls");
         PrintTable(player, boss);
 
@@ -232,7 +232,7 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
 
         if (input == command && elapsed <= timeLimitSeconds) {
             std::cout << GetText("PlayerComboSuccess") << "\n";
-            boss.TakeDamage(10);
+            boss.TakeDamage(player.GetStrength());
         }
         else {
             std::cout << GetText("PlayerComboFail") << "\n";

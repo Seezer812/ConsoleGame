@@ -1,6 +1,7 @@
 ﻿#include "Creature.h"
 
-Creature::Creature(const std::string& json_filename) {
+Creature::Creature(const std::string& json_filename)
+{
 	std::ifstream file(json_filename);
 	if (!file.is_open()) {
 
@@ -107,7 +108,7 @@ std::unordered_map <std::string, std::vector<std::string>> Creature::GetDialogue
 	return dialogues;
 }
 
-InventoryManager Creature::GetInventory()
+InventoryManager& Creature::GetInventory()
 {
 	return inventory;
 }
@@ -139,12 +140,16 @@ void Creature::SetMoney(int new_money)
 
 void Creature::SetActiveWeapon(Item weapon)
 {
+	strength -= active_weapon.GetStrength();
 	active_weapon = weapon;
+	strength += active_weapon.GetStrength();
 }
 
-void Creature::SetActiveArmor(Item armor)
+void Creature::SetActiveArmor(Item Armor)
 {
-	active_armor = armor;
+	armor -= active_armor.GetStrength();
+	active_armor = Armor;
+	armor += active_armor.GetStrength();
 }
 
 int Creature::GetAttack() {

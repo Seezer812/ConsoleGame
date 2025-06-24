@@ -27,8 +27,8 @@ private:
 	int attack_boost = 0;
 	int attack_penalty = 0;
 
-	Item active_weapon;
-	Item active_armor;
+	Item active_weapon{"json/WithoutWeapon.json"};
+	Item active_armor{"json/WithoutArmor.json"};
 
 	std::unordered_map <std::string, std::vector<std::string>> dialogues;
 	InventoryManager inventory;
@@ -38,7 +38,7 @@ public:
 	Creature() = default;
 
 	std::unordered_map <std::string, std::vector<std::string>> GetDialogues();
-	InventoryManager GetInventory();
+	InventoryManager& GetInventory();
 	void AddItem(Item item);
 	void RemoveItem(std::string name);
 
