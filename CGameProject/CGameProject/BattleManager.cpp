@@ -70,7 +70,7 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     while (player.GetHp() > 0 && enemy.GetHp() > 0) {
-        system("cls");
+        std::cout << "\033[2J\033[H";
 
         PrintTable(player, enemy);
 
@@ -95,7 +95,7 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             else {
                 std::cout << GetText("InvalidInput") << "\n";
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                system("cls");
+                std::cout << "\033[2J\033[H";
                 PrintTable(player, enemy);
             }
         }
@@ -188,7 +188,7 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
         std::cin.get();
     }
 
-    system("cls");
+    std::cout << "\033[2J\033[H";
 
     if (player.GetHp() > 0) {
         std::cout << enemy.GetDialogues().at("Victory")[Random::Randint(0, enemy.GetDialogues().at("Victory").size() - 1)] << "\n";
@@ -210,7 +210,7 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
 
     while (player.GetHp() > 0 && boss.GetHp() > 0) {
         const int comboLength = Random::Randint(3, 8);
-        system("cls");
+        std::cout << "\033[2J\033[H";
         PrintTable(player, boss);
 
         std::string command;
@@ -250,7 +250,7 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
         std::cin.get();
     }
 
-    system("cls");
+    std::cout << "\033[2J\033[H";
 
     if (player.GetHp() > 0) {
         std::cout << boss.GetDialogues().at("Victory")[Random::Randint(0, boss.GetDialogues().at("Victory").size() - 1)] << "\n";

@@ -60,7 +60,7 @@ void Market::BuyItem(Creature& buyer) {
         if (i != "Exit") {
             if (stock.HasItem(i)) {
                 if (stock.GetItem(i)->GetPrice() <= buyer.GetMoney()) {
-                    system("cls");
+                    std::cout << "\033[2J\033[H";
                     std::cout << "You buy: " << i << "\n";
                     buyer.SpendMoney(stock.GetItem(i)->GetPrice());
                     buyer.AddItem(*stock.GetItem(i));
@@ -68,12 +68,12 @@ void Market::BuyItem(Creature& buyer) {
 
                 }
                 else {
-                    system("cls");
+                    std::cout << "\033[2J\033[H";
                     std::cout << "You don't have enough money\n";
                 }
             }
             else {
-                system("cls");
+                std::cout << "\033[2J\033[H";
                 std::cout << "You enter wrong item name\n";
             }
         }

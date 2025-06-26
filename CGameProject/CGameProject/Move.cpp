@@ -52,7 +52,7 @@ void Move::UseItem()
             break;
 
         if (!player.GetInventory().HasItem(i)) {
-            system("cls");
+            std::cout << "\033[2J\033[H";
             std::cout << "You entered an incorrect item name\n";
             continue;
         }
@@ -66,7 +66,7 @@ void Move::UseItem()
         std::string type = item->GetType();
         std::string name = item->GetName();
 
-        system("cls");
+        std::cout << "\033[2J\033[H";
 
         if (type == "Weapon") {
             player.SetActiveWeapon(*item);
@@ -110,7 +110,7 @@ void Move::StartChooseWay()
         else {
             std::cout << GetMoveText("InvalidInput") << "\n";
             std::cin.ignore('\n');
-            system("cls");
+            std::cout << "\033[2J\033[H";
         }
 
         switch (num_choice)
