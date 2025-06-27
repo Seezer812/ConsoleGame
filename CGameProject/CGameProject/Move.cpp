@@ -5,8 +5,8 @@
 #include <iostream>
 
 
-Move::Move(std::string path, Creature& Player, Market& Market, SaveManager& Save)
-    : player(Player), market(Market), save(Save)
+Move::Move(std::string path, Creature& Player, SaveManager& Save)
+    : player(Player), save(Save), path(path)
 {
 
     std::ifstream file(path);
@@ -14,7 +14,19 @@ Move::Move(std::string path, Creature& Player, Market& Market, SaveManager& Save
         throw std::runtime_error("Не удалось открыть файл JSON: " + path);
     }
 
+    json j;
+    file >> j;
+    std::string worldPath;
+    worldPath = j[std::to_string(player.GetWorldNum())];
+
+    std::ifstream file(worldPath);
+    if (!file.is_open()) {
+        throw std::runtime_error("Не удалось открыть файл JSON: " + worldPath);
+    }
+
     file >> move_text;
+
+
 
     if (move_text.contains("PathEnemy1")) {
         for (const auto& [key, path] : move_text.items()) {
@@ -27,7 +39,48 @@ Move::Move(std::string path, Creature& Player, Market& Market, SaveManager& Save
                 boss = obj;
             }
             else if (key.find("PathMarket") != std::string::npos) {
-                return;
+                Market mrk(path.get<std::string>());
+                market = mrk;
+            }
+        }
+    }
+}
+
+void Move::СhangeWorld()
+{
+
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        throw std::runtime_error("Не удалось открыть файл JSON: " + path);
+    }
+
+    json j;
+    file >> j;
+    std::string worldPath;
+    worldPath = j[std::to_string(player.GetWorldNum())];
+
+    std::ifstream file(worldPath);
+    if (!file.is_open()) {
+        throw std::runtime_error("Не удалось открыть файл JSON: " + worldPath);
+    }
+
+    file >> move_text;
+
+    enemies.clear();
+
+    if (move_text.contains("PathEnemy1")) {
+        for (const auto& [key, path] : move_text.items()) {
+            if (key.find("PathEnemy") != std::string::npos) {
+                Creature obj(path.get<std::string>());
+                enemies.push_back(obj);
+            }
+            else if (key.find("PathBoss") != std::string::npos) {
+                Creature obj(path.get<std::string>());
+                boss = obj;
+            }
+            else if (key.find("PathMarket") != std::string::npos) {
+                Market mrk(path.get<std::string>());
+                market = mrk;
             }
         }
     }
@@ -120,6 +173,7 @@ void Move::StartChooseWay()
             break;
         case 2:
             bm.StartBossBattle(player, boss);
+            СhangeWorld();
             break;
         case 3:
             market.BuyItem(player);

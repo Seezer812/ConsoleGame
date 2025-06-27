@@ -255,6 +255,7 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
 
     if (player.GetHp() > 0) {
         std::cout << boss.GetDialogues().at("Victory")[Random::Randint(0, boss.GetDialogues().at("Victory").size() - 1)] << "\n";
+        player.UpWorld();
         return 1;
     }
     else {

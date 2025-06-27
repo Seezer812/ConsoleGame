@@ -62,7 +62,7 @@ void SaveManager::SaveGame(Creature& player) {
     j["Money"] = std::to_string(player.GetMoney());
 
 
-    j["WorldNum"] = player.GetWorldNum();
+    j["WorldNum"] = std::to_string(player.GetWorldNum());
 
 
     const auto& inv = player.GetInventory().GetAllItems();

@@ -12,15 +12,11 @@
 class Move
 {
 private:
-	enum class MoveState
-	{
-		kEnemiesRoom,
-		kBossRoom,
-		kMarket,
-		kBase
-	};
+
+	void ÑhangeWorld();
 
 	std::string GetMoveText(const std::string& key);
+
 	nlohmann::json move_text;
 	std::vector<Creature> enemies;
 	BattleManager& bm = BattleManager::GetInstance();
@@ -28,10 +24,13 @@ private:
 	Creature boss;
 	Market market;
 	SaveManager save;
+	std::string path;
+
+
 
 public:
 
-	Move(std::string path, Creature& Player, Market& Market, SaveManager& Save);
+	Move(std::string path, Creature& Player, SaveManager& Save);
 
 	void UseItem();
 	void StartChooseWay();

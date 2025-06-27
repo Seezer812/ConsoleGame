@@ -62,6 +62,7 @@ public:
 	bool IsAlive() const;
 
 	void SpendMoney(int value);
+	void UpWorld();
 	void SetTemporaryArmor(int value);
 	void Heal(int amount);
 	void BoostNextAttack(int amount);

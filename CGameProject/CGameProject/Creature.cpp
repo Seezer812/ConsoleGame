@@ -206,3 +206,6 @@ void Creature::SpendMoney(int value)
 	money -= value;
 }
 
+void Creature::UpWorld() {
+	world_num++;
+}
