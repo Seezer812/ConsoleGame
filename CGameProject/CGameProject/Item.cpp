@@ -4,7 +4,8 @@
 Item::Item() : name("Unknown"), type("Unknown"), strength(0), price(0) {}
 
 
-Item::Item(std::string path)
+Item::Item(std::string path):
+    path(path)
 {
     std::ifstream file(path);
     if (!file.is_open()) {
@@ -70,5 +71,10 @@ void Item::SetPrice(int new_price)
 int Item::GetPrice() const
 {
     return price;
+}
+
+std::string Item::GetPath() const
+{
+    return path;
 }
 

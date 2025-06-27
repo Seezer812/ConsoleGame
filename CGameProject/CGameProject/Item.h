@@ -12,6 +12,7 @@ class Item
 private:
 	std::string name;
 	std::string type;
+	std::string path;
 	int strength;
 	int price;
 public:
@@ -24,7 +25,7 @@ public:
 
 	int GetStrength() const;
 	int GetPrice() const;
-
+	std::string GetPath() const;
 
 	void SetName(std::string new_name);
 	void SetType(std::string new_type);

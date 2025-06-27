@@ -5,8 +5,8 @@
 #include <iostream>
 
 
-Move::Move(std::string path, Creature& Player, Market& Market)
-    : player(Player), market(Market)
+Move::Move(std::string path, Creature& Player, Market& Market, SaveManager& Save)
+    : player(Player), market(Market), save(Save)
 {
 
     std::ifstream file(path);
@@ -104,7 +104,7 @@ void Move::StartChooseWay()
         std::getline(std::cin, input);
 
         std::stringstream ss(input);
-        if (ss >> num_choice && (num_choice >= 1 && num_choice <= 4)) {
+        if (ss >> num_choice && (num_choice >= 1 && num_choice <= 5)) {
             valid_input = true;
         }
         else {
@@ -127,7 +127,9 @@ void Move::StartChooseWay()
         case 4:
             UseItem();
             break;
-
+        case 5:
+            save.SaveGame(player);
+            exit(0);
         default:
             break;
         }

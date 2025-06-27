@@ -4,6 +4,7 @@
 #include "json.hpp"
 #include "Market.h"
 #include "BattleManager.h";
+#include "SaveManager.h"
 
 #include <string>
 #include <vector>
@@ -26,9 +27,11 @@ private:
 	Creature player;
 	Creature boss;
 	Market market;
+	SaveManager save;
+
 public:
 
-	Move(std::string path, Creature& Player, Market& Market);
+	Move(std::string path, Creature& Player, Market& Market, SaveManager& Save);
 
 	void UseItem();
 	void StartChooseWay();

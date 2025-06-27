@@ -22,6 +22,7 @@ private:
 	int armor;
 	int money;
 	int strength;
+	int world_num;
 
 	int temp_armor = 0;
 	int attack_boost = 0;
@@ -48,6 +49,7 @@ public:
 	int GetArmor() const;
 	int GetMoney() const;
 	int GetPermanentArmor() const;
+	int GetWorldNum() const;
 
 	void SetHp(int new_hp);
 	void SetArmor(int new_armor);

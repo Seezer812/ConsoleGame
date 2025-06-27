@@ -44,6 +44,14 @@ Creature::Creature(const std::string& json_filename)
 		money = 0;
 	}
 
+	if (j.contains("WorldNum")) {
+		world_num = std::stoi(j["WorldNum"].get<std::string>());
+	}
+	else {
+		world_num = 0;
+	}
+
+
 	if (j.contains("Dialogues")) {
 		dialogues.clear();
 		for (auto& [key, arr] : j["Dialogues"].items()) {
@@ -96,6 +104,11 @@ int Creature::GetArmor() const
 int Creature::GetPermanentArmor() const
 {
 	return armor;
+}
+
+int Creature::GetWorldNum() const
+{
+	return world_num;
 }
 
 

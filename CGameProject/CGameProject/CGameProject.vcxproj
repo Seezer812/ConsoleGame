@@ -136,6 +136,7 @@
     <ClCompile Include="Market.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Random.cpp" />
+    <ClCompile Include="SaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleManager.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Market.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="SaveManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

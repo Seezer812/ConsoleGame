@@ -9,47 +9,5 @@
     "json/IronSword.json",
     "json/LeatherArmor.json"
   ],
-  "Dialogues": {
-    "Attack": [
-      "Every strike of mine is a step towards victory and freedom!",
-      "Feel the force that drives me!",
-      "Don't think you can escape — I'll tear you apart!",
-      "Every blow brings your end closer!",
-      "I won't stop until you fall at my feet!",
-      "Wham! Take that, you wretch!",
-      "Out of my way! I don't have time for the likes of you!",
-      "Too late to beg for mercy...",
-      "I didn't back down before — and I sure won't back down to you!",
-      "Pain was coming for you — I'm just speeding up the process!",
-      "Hold on tight — this is gonna hurt!",
-      "You're just another mistake I'm correcting!",
-      "Don't resist. This will end quickly — and badly for you.",
-      "I have a goal. You're just an obstacle in my path."
-    ],
-    "Defense": [
-      "Let's see you break through *this*!",
-      "You’ll have to do better than that to touch me!",
-      "My guard is up — come and try me!",
-      "I’ve trained for worse than this!",
-      "Steel and will — my best defense!",
-      "I’m not just standing here to look pretty!",
-      "Defense is just the start of my counterattack.",
-      "Take your shot — I’m ready.",
-      "I’ve weathered storms worse than you.",
-      "Come on, I’ve blocked heavier hits in my sleep!"
-    ],
-    "GetDamage": [
-      "Hit harder. I haven't even had to strain yet.",
-      "That's all? I was expecting something serious.",
-      "My feet stand firm, my hands hold steady. I won't fall.",
-      "If you want to break me — you'll have to try much harder.",
-      "You're not the first who tried to finish me off. And you won't be the last.",
-      "Ow, was that a hit? I thought it was just the wind blowing.",
-      "I'm falling asleep here. Maybe start trying?",
-      "Now's not the time to fall. Now — is the time to stand firm!",
-      "Not a chance... I'm holding on!",
-      "Damn... not bad. But I'm still here.",
-      "My feet stand firm, my hands hold steady. I'm not falling."
-    ]
-  }
+  "WorldNum": "1"
 }

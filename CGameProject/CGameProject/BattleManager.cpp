@@ -192,6 +192,7 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
 
     if (player.GetHp() > 0) {
         std::cout << enemy.GetDialogues().at("Victory")[Random::Randint(0, enemy.GetDialogues().at("Victory").size() - 1)] << "\n";
+        player.SetMoney(player.GetMoney() + enemy.GetMoney());
         return 1;
     }
     else {
