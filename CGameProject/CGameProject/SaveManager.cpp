@@ -50,6 +50,7 @@ SaveManager::SaveManager() {
             std::cerr << "Failed to create save: " << e.what() << '\n';
         }
     }
+    std::cout << "\033[2J\033[H";
 }
 
 void SaveManager::SaveGame(Creature& player) {
@@ -60,9 +61,6 @@ void SaveManager::SaveGame(Creature& player) {
     j["Hp"] = std::to_string(player.GetHp());
     j["Armor"] = std::to_string(player.GetPermanentArmor());
     j["Money"] = std::to_string(player.GetMoney());
-
-
-    j["WorldNum"] = std::to_string(player.GetWorldNum());
 
 
     const auto& inv = player.GetInventory().GetAllItems();

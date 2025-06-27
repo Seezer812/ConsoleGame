@@ -22,7 +22,6 @@ private:
 	int armor;
 	int money;
 	int strength;
-	int world_num;
 
 	int temp_armor = 0;
 	int attack_boost = 0;
@@ -62,7 +61,6 @@ public:
 	bool IsAlive() const;
 
 	void SpendMoney(int value);
-	void UpWorld();
 	void SetTemporaryArmor(int value);
 	void Heal(int amount);
 	void BoostNextAttack(int amount);

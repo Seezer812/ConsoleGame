@@ -1,13 +1,13 @@
 {
     "Armor": "0",
-    "Hp": "50000",
+    "Hp": "49840",
     "Inventory": [
         "json/WoodSword.json",
         "json/IronSword.json",
-        "json/LeatherArmor.json"
+        "json/LeatherArmor.json",
+        "json/IronSword.json"
     ],
-    "Money": "1000",
+    "Money": "900",
     "Name": "Billy Nogami",
-    "Strength": "10",
-    "WorldNum": "1"
+    "Strength": "10"
 }

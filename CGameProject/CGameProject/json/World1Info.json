@@ -4,7 +4,7 @@
   "PathBoss": "json/Boss1.json",
   "PathMarket": "json/Market1.json",
   "StartPromt": "You stand at a crossroads - countless paths stretch before you. Which will you take?\n press enter to choose.",
-  "Choices": " 1. Enemies room \n 2. Boss room \n 3. Market \n 4. Show inventory ",
-  "InvalidInput": "Invalid input. Enter choice (1-4). Press Enter to continue.",
+  "Choices": " 1. Enemies room \n 2. Boss room \n 3. Market \n 4. Show inventory \n 5. Exit",
+  "InvalidInput": "Invalid input. Enter choice (1-5). Press Enter to continue.",
   "EnterText": "Enter: "
 }

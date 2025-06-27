@@ -1,32 +1,19 @@
-#include "Move.h"
+ï»¿#include "Move.h"
 
 #include <fstream>
 #include <sstream>
 #include <iostream>
 
-
 Move::Move(std::string path, Creature& Player, SaveManager& Save)
-    : player(Player), save(Save), path(path)
+    : player(Player), save(Save)
 {
 
     std::ifstream file(path);
     if (!file.is_open()) {
-        throw std::runtime_error("Íå óäàëîñü îòêðûòü ôàéë JSON: " + path);
-    }
-
-    json j;
-    file >> j;
-    std::string worldPath;
-    worldPath = j[std::to_string(player.GetWorldNum())];
-
-    std::ifstream file(worldPath);
-    if (!file.is_open()) {
-        throw std::runtime_error("Íå óäàëîñü îòêðûòü ôàéë JSON: " + worldPath);
+        throw std::runtime_error("ÃÃ¥ Ã³Ã¤Ã Ã«Ã®Ã±Ã¼ Ã®Ã²ÃªÃ°Ã»Ã²Ã¼ Ã´Ã Ã©Ã« JSON: " + path);
     }
 
     file >> move_text;
-
-
 
     if (move_text.contains("PathEnemy1")) {
         for (const auto& [key, path] : move_text.items()) {
@@ -46,45 +33,6 @@ Move::Move(std::string path, Creature& Player, SaveManager& Save)
     }
 }
 
-void Move::ÑhangeWorld()
-{
-
-    std::ifstream file(path);
-    if (!file.is_open()) {
-        throw std::runtime_error("Íå óäàëîñü îòêðûòü ôàéë JSON: " + path);
-    }
-
-    json j;
-    file >> j;
-    std::string worldPath;
-    worldPath = j[std::to_string(player.GetWorldNum())];
-
-    std::ifstream file(worldPath);
-    if (!file.is_open()) {
-        throw std::runtime_error("Íå óäàëîñü îòêðûòü ôàéë JSON: " + worldPath);
-    }
-
-    file >> move_text;
-
-    enemies.clear();
-
-    if (move_text.contains("PathEnemy1")) {
-        for (const auto& [key, path] : move_text.items()) {
-            if (key.find("PathEnemy") != std::string::npos) {
-                Creature obj(path.get<std::string>());
-                enemies.push_back(obj);
-            }
-            else if (key.find("PathBoss") != std::string::npos) {
-                Creature obj(path.get<std::string>());
-                boss = obj;
-            }
-            else if (key.find("PathMarket") != std::string::npos) {
-                Market mrk(path.get<std::string>());
-                market = mrk;
-            }
-        }
-    }
-}
 
 std::string Move::GetMoveText(const std::string& key)
 {
@@ -143,6 +91,7 @@ void Move::UseItem()
 void Move::StartChooseWay()
 {
     std::cout << GetMoveText("StartPromt");
+    std::cin.get();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     int num_choice = 0;
@@ -152,6 +101,7 @@ void Move::StartChooseWay()
         std::string choices = move_text["Choices"].get<std::string>();
         std::cout << choices << "\n";
         std::cout << GetMoveText("EnterText");
+
 
         std::string input;
         std::getline(std::cin, input);
@@ -173,15 +123,19 @@ void Move::StartChooseWay()
             break;
         case 2:
             bm.StartBossBattle(player, boss);
-            ÑhangeWorld();
             break;
         case 3:
+            std::cout << "\033[2J\033[H";
             market.BuyItem(player);
+            std::cout << "\033[2J\033[H";
             break;
         case 4:
+            std::cout << "\033[2J\033[H";
             UseItem();
+            std::cout << "\033[2J\033[H";
             break;
         case 5:
+            std::cout << "\033[2J\033[H";
             save.SaveGame(player);
             exit(0);
         default:

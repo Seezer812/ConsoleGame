@@ -3,7 +3,7 @@
 
 #include "json.hpp"
 #include "Market.h"
-#include "BattleManager.h";
+#include "BattleManager.h"
 #include "SaveManager.h"
 
 #include <string>
@@ -13,7 +13,6 @@ class Move
 {
 private:
 
-	void ÑhangeWorld();
 
 	std::string GetMoveText(const std::string& key);
 
@@ -25,8 +24,6 @@ private:
 	Market market;
 	SaveManager save;
 	std::string path;
-
-
 
 public:
 

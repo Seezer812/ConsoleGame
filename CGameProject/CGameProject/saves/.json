@@ -8,6 +8,6 @@
     "json/WoodSword.json",
     "json/IronSword.json",
     "json/LeatherArmor.json"
-  ]
-
+  ],
+  "WorldNum": "1"
 }
