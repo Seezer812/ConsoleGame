@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SAVE
+#define SAVE
 
 #include <iostream>
 
@@ -17,3 +18,4 @@ public:
 	std::string GetPath() const;
 };
 
+#endif // !SAVE
