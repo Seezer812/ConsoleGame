@@ -1,9 +1,15 @@
-[
-  "json/IronSword.json",
-  "json/IronArmor.json",
-  "json/LeatherArmor.json",
-  "json/IronSword.json",
-  "json/HealingPotion.json",
-  "json/Chainbreaker.json",
-  "json/ArchangelCuirass.json"
-]
+{
+  "ItemPath1": "json/IronSword.json",
+  "ItemPath2": "json/IronArmor.json",
+  "ItemPath3": "json/LeatherArmor.json",
+  "ItemPath4": "json/IronSword.json",
+  "ItemPath5": "json/HealingPotion.json",
+  "ItemPath6": "json/SuperHealingPotion.json",
+  "ItemPath7": "json/Chainbreaker.json",
+  "ItemPath8": "json/ArchangelCuirass.json",
+  "ExitText": "- Exit\n",
+  "Broke": "You don't have enough money\n",
+  "WrongName": "You enter wrong item name\n",
+  "AvailableItems": "Items available in the market:\n",
+  "Reach": "You buy all items\n"
+}

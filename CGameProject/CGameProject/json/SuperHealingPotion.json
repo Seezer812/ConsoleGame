@@ -1,0 +1,6 @@
+{
+  "name": "SuperHealingPotion",
+  "type": "Potion",
+  "strength": 45,
+  "price":  100
+}

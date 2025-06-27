@@ -11,7 +11,9 @@
 class Market {
 private:
     InventoryManager stock;
-    std::string path;
+    nlohmann::json market_text;
+
+    std::string GetMarketText(const std::string& key) const;
 public:
     Market(const std::string& jsonPath);
     Market() = default;
