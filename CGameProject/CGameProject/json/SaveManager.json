@@ -1,0 +1,10 @@
+{
+  "AvailableSaves": "Available saves:",
+  "CreateNewSaveOption": ". Create new save",
+  "ChooseSaveSlot": "Choose save slot: ",
+  "EnterNewSaveName": "Enter new save name (without extension): ",
+  "NewSaveCreated": "New save created: {path}",
+  "FailedToCreateSave": "Failed to create save: {error}",
+  "FailedToOpenSave": "Failed to open save file for writing.",
+  "GameSaved": "Game saved to {path}"
+}
