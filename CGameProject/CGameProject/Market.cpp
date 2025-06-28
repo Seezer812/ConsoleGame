@@ -4,42 +4,35 @@
 #include <iomanip>
 #include <fstream>
 
-using json = nlohmann::json;
-
 Market::Market(const std::string& jsonPath) {
     std::ifstream file(jsonPath);
     if (!file.is_open()) {
         throw std::runtime_error("Cannot open market JSON file: " + jsonPath);
     }
+    
+    file >> market_text;
 
-    json itemPathsJson;
-    file >> itemPathsJson;
-
-    if (!itemPathsJson.is_array()) {
-        throw std::runtime_error("Invalid market JSON format: expected array of paths");
-    }
-
-    for (const auto& path : itemPathsJson) {
-        if (!path.is_string()) continue;
-
-        try {
+    for (const auto& [key, path] : market_text.items()) {
+        if (key.find("ItemPath") != std::string::npos) {
             Item item(path.get<std::string>());
             stock.AddItem(item);
         }
-        catch (const std::exception& e) {
-            std::cerr << "Failed to load item from: " << path << " (" << e.what() << ")" << std::endl;
-        }
     }
-    path = jsonPath;
+}
+
+std::string Market::GetMarketText(const std::string& key) const
+{
+    if (market_text.contains(key)) return market_text[key];
+    return "[Missing string: " + key + "]";
 }
 
 void Market::DisplayItems() const {
-    std::cout << "Items available in the market:\n";
+    std::cout << GetMarketText("AvailableItems");
     if (!stock.GetAllItems().empty()) {
         stock.ListItems();
     }
     else {
-        std::cout << "You buy all items\n";
+        std::cout << GetMarketText("Reach");
     }
 }
 
@@ -53,7 +46,7 @@ void Market::BuyItem(Creature& buyer) {
 
     while (true) {
         DisplayItems();
-        std::cout << "- Exit\n";
+        std::cout << GetMarketText("ExitText");
         std::cout << "Your money: " << buyer.GetMoney() << std::endl;
         std::string i;
         std::cin >> i;
@@ -69,12 +62,12 @@ void Market::BuyItem(Creature& buyer) {
                 }
                 else {
                     std::cout << "\033[2J\033[H";
-                    std::cout << "You don't have enough money\n";
+                    std::cout << GetMarketText("Broke");
                 }
             }
             else {
                 std::cout << "\033[2J\033[H";
-                std::cout << "You enter wrong item name\n";
+                std::cout << GetMarketText("WrongName");
             }
         }
         else {

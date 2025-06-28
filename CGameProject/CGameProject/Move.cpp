@@ -10,7 +10,7 @@ Move::Move(std::string path, Creature& Player, SaveManager& Save)
 
     std::ifstream file(path);
     if (!file.is_open()) {
-        throw std::runtime_error("Íå óäàëîñü îòêðûòü ôàéë JSON: " + path);
+        throw std::runtime_error("Cannot open Move JSON: " + path);
     }
 
     file >> move_text;
