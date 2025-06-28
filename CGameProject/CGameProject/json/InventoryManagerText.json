@@ -1,0 +1,5 @@
+{
+  "InventoryEmpty": "Inventory is empty.",
+  "InventoryItem": "- {Name} (Type: {Type}, Strength: {Strength}, Price: {Price})",
+  "InventoryTypeItem": "{Index}. {Name} ({Strength})"
+}
