@@ -9,6 +9,15 @@
     "5. Taunt",
     "6. Focus (stronger next hit)"
   ],
+  "PowerHit": "2",
+  "ReduceAttackTemporarily": "5",
+  "BoostNextAttack": "10",
+  "Block": "2",
+  "TemporaryArmor": "5",
+  "Heal": "15",
+  "minLen": "3",
+  "maxLen": "8",
+  "timeLimitSeconds": "5",
   "EnterText": "Enter: ",
   "YourTurn": "Your turn:",
   "EnemyTurn": "{enemy} turn:",
@@ -33,5 +42,7 @@
   "TimeLimitInfo": "You have {seconds} seconds!",
   "PlayerComboSuccess": "You made it! Critical hit to the boss!",
   "PlayerComboFail": "You failed or were too slow! No damage dealt!",
-  "BossAttacks": "{enemy} strikes you!"
+  "BossAttacks": "{enemy} strikes you!",
+  "LoseGame": "YOU LOSE THE GAME!!!",
+  "WinGame": "YOU ARE WINNER!!!!!!!!"
 }

@@ -6,6 +6,7 @@
 #include <regex>
 #include <limits>
 #include <sstream>
+#include <string>
 
 const std::string kReset = "\033[0m";
 const std::string kBlue = "\033[34m";
@@ -110,17 +111,17 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
             break;
         case 2:
-            player_damage = player.GetAttack() / 2;
-            player.SetTemporaryArmor(5);
+            player_damage = player.GetAttack() / std::stoi(battle_text["Block"].get<std::string>());
+            player.SetTemporaryArmor(std::stoi(battle_text["TemporaryArmor"].get<std::string>()));
             std::cout << Format(GetText("CounterDealt"), "value", std::to_string(player_damage)) << "\n";
             break;
         case 3:
-            player.Heal(15);
+            player.Heal(std::stoi(battle_text["Heal"].get<std::string>()));
             std::cout << GetText("HealUsed") << "\n";
             break;
         case 4:
             if (Random::Randint(0, 1) == 1) {
-                player_damage = static_cast<int>(player.GetAttack() * 1.5);
+                player_damage = (player.GetAttack() * std::stoi(battle_text["PowerHit"].get<std::string>()));
                 std::cout << Format(GetText("AttackDealt"), "value", std::to_string(player_damage)) << "\n";
             }
             else {
@@ -128,11 +129,11 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             }
             break;
         case 5:
-            enemy.ReduceAttackTemporarily(5);
+            enemy.ReduceAttackTemporarily(std::stoi(battle_text["ReduceAttackTemporarily"].get<std::string>()));
             std::cout << GetText("TauntUsed") << "\n";
             break;
         case 6:
-            player.BoostNextAttack(10);
+            player.BoostNextAttack(std::stoi(battle_text["BoostNextAttack"].get<std::string>()));
             std::cout << GetText("FocusUsed") << "\n";
             break;
         }
@@ -153,18 +154,18 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(enemy_damage)) << "\n";
             break;
         case 2:
-            enemy_damage = enemy.GetAttack() / 2;
-            enemy.SetTemporaryArmor(5);
+            enemy_damage = enemy.GetAttack() / std::stoi(battle_text["Block"].get<std::string>());
+            enemy.SetTemporaryArmor(std::stoi(battle_text["TemporaryArmor"].get<std::string>()));
             std::cout << Format(GetText("EnemyCounter"), "enemy", enemy.GetName());
             std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(enemy_damage)) << "\n";
             break;
         case 3:
-            enemy.Heal(15);
+            enemy.Heal(std::stoi(battle_text["Heal"].get<std::string>()));
             std::cout << Format(GetText("EnemyHeal"), "enemy", enemy.GetName()) << "\n";
             break;
         case 4:
             if (Random::Randint(0, 1) == 1) {
-                enemy_damage = static_cast<int>(enemy.GetAttack() * 1.5);
+                enemy_damage = (enemy.GetAttack() * std::stoi(battle_text["PowerHit"].get<std::string>()));
                 std::cout << Format(GetText("EnemyPowerHit"), "enemy", enemy.GetName());
                 std::cout << Format(GetText("EnemyDealt"), "value", std::to_string(enemy_damage)) << "\n";
             }
@@ -173,11 +174,11 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
             }
             break;
         case 5:
-            player.ReduceAttackTemporarily(5);
+            player.ReduceAttackTemporarily(std::stoi(battle_text["ReduceAttackTemporarily"].get<std::string>()));
             std::cout << Format(GetText("EnemyTaunt"), "enemy", enemy.GetName()) << "\n";
             break;
         case 6:
-            enemy.BoostNextAttack(10);
+            enemy.BoostNextAttack(std::stoi(battle_text["BoostNextAttack"].get<std::string>()));
             std::cout << Format(GetText("EnemyFocus"), "enemy", enemy.GetName()) << "\n";
             break;
         }
@@ -197,7 +198,8 @@ int BattleManager::StartRegularBattle(Creature& player, Creature& enemy) {
     }
     else {
         std::cout << enemy.GetDialogues().at("Defeat")[Random::Randint(0, enemy.GetDialogues().at("Defeat").size() - 1)] << "\n";
-        return 0;
+        std::cout << GetText("GameLose");
+        exit(0);
     }
 }
 
@@ -207,10 +209,12 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
     std::cout << GetText("StartBossBattlePrompt") << "\n";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    const int timeLimitSeconds = 5;
+    const int timeLimitSeconds = std::stoi(battle_text["timeLimitSeconds"].get<std::string>());
+    const int maxLen = std::stoi(battle_text["maxLen"].get<std::string>());
+    const int minLen = std::stoi(battle_text["minLen"].get<std::string>());
 
     while (player.GetHp() > 0 && boss.GetHp() > 0) {
-        const int comboLength = Random::Randint(3, 8);
+        const int comboLength = Random::Randint(minLen, maxLen);
         std::cout << "\033[2J\033[H";
         PrintTable(player, boss);
 
@@ -255,10 +259,12 @@ int BattleManager::StartBossBattle(Creature& player, Creature& boss) {
 
     if (player.GetHp() > 0) {
         std::cout << boss.GetDialogues().at("Victory")[Random::Randint(0, boss.GetDialogues().at("Victory").size() - 1)] << "\n";
-        return 1;
+        std::cout << GetText("GameWin");
+        exit(0);
     }
     else {
         std::cout << boss.GetDialogues().at("Defeat")[Random::Randint(0, boss.GetDialogues().at("Defeat").size() - 1)] << "\n";
-        return 0;
+        std::cout << GetText("GameLose");
+        exit(0);
     }
 }
